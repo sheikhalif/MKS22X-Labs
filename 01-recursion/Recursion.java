@@ -20,6 +20,37 @@ public class Recursion{
     }
   }
 
+  public static void printNoDoubleLetters(int length, char[] letters){
+    printNoDoubleLetters(length, "", letters);
+  }
+
+  public static void printNoDoubleLetters(int length, String word, char[] letters){
+    if (length == word.length()){
+      boolean pass = true;
+      for (int i = 0; i < word.length(); i++){
+        if (numberLettersInString(word, letters[i]) > 1){
+          pass = false;
+        }
+      }
+      if (pass == true)System.out.println(word);
+
+    }else{
+      for(int i = 0; i < letters.length; i++){
+        printAllWords(length, word+letters[i]);
+      }
+    }
+  }
+
+  public static int numberLettersInString(String str, char c){
+    int answer = 0;
+    for (int i = 0; i < str.length(); i++){
+      if (str.charAt(i) == c){
+        answer++
+      }
+    }
+    return answer;
+  }
+
   public static void main(String args[]){
     printAllWords(2);
     printAllWords(3);
