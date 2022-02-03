@@ -27,7 +27,7 @@ public class Recursion{
   public static void printNoDoubleLetters(int length, String word, char[] letters){
     if (length == word.length()){
       boolean pass = true;
-      for (int i = 0; i < word.length(); i++){
+      for (int i = 0; i < letters.length; i++){
         if (numberLettersInString(word, letters[i]) > 1){
           pass = false;
         }
@@ -45,14 +45,16 @@ public class Recursion{
     int answer = 0;
     for (int i = 0; i < str.length(); i++){
       if (str.charAt(i) == c){
-        answer++
+        answer++;
       }
     }
     return answer;
   }
 
   public static void main(String args[]){
-    printAllWords(2);
-    printAllWords(3);
+    char[] array1 = {'a', 'b', 'c', 'd', 'd'};
+    //printAllWords(2);
+    //printAllWords(3);
+    printNoDoubleLetters(3, array1);
   }
 }
