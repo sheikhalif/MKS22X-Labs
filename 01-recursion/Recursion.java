@@ -26,17 +26,15 @@ public class Recursion{
 
   public static void printNoDoubleLetters(int length, String word, char[] letters){
     if (length == word.length()){
-      boolean pass = true;
-      for (int i = 0; i < letters.length; i++){
-        if (numberLettersInString(word, letters[i]) > 1){
-          pass = false;
-        }
-      }
-      if (pass == true)System.out.println(word);
-
+      System.out.println(word);
     }else{
       for(int i = 0; i < letters.length; i++){
-        printAllWords(length, word+letters[i]);
+        if (i > 0){
+          if (!(word.charAt(word.length()-1) == letters[i]))printAllWords(length, word+letters[i]);
+        }
+        else{
+          printAllWords(length, word+letters[i]);
+        }
       }
     }
   }
@@ -52,7 +50,7 @@ public class Recursion{
   }
 
   public static void main(String args[]){
-    char[] array1 = {'a', 'b', 'c', 'd', 'd'};
+    char[] array1 = {'a', 'b', 'c', 'd', 'e'};
     //printAllWords(2);
     //printAllWords(3);
     printNoDoubleLetters(3, array1);
