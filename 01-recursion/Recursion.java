@@ -44,17 +44,15 @@ public class Recursion{
     }
   }
 
-  public static double sqrt(double n){
-    int initialValue = n;
-    int guess = 1;
+  public static double sqrt(double n, double intValue, double guess){
     if (n == 0){
       return 0;
     }
-    if (((n*n) - initialValue) < 0.00001 && ((n*n) - initialValue) > -0.00001){
+    if (((n*n) - intValue) < 0.00001 && ((n*n) - intValue) > -0.00001){
       return n;
     }else{
       guess = ((n/guess) + guess) / 2;
-      return sqrt(guess);
+      return sqrt(guess, intValue, guess);
     }
   }
 
@@ -66,6 +64,8 @@ public class Recursion{
     System.out.println(reverse("abcdef"));
     System.out.println(reverse(""));
     System.out.println(reverse("a"));
-    System.out.println();
+    System.out.println(sqrt(100, 100, 1));
+    System.out.println(sqrt(0, 0, 1));
+    System.out.println(sqrt(22, 22, 1));
   }
 }
