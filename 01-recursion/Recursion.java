@@ -41,14 +41,12 @@ public class Recursion{
     }
   }
 
-  public static int numberLettersInString(String str, char c){
-    int answer = 0;
-    for (int i = 0; i < str.length(); i++){
-      if (str.charAt(i) == c){
-        answer++;
-      }
+  public static String reverse(String s){
+    if (s.length() == 0){
+      return s;
+    }else{
+      return s.charAt(s.length()-1)+reverse(s.substring(0, s.length()-1));
     }
-    return answer;
   }
 
   public static void main(String args[]){
