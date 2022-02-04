@@ -44,6 +44,20 @@ public class Recursion{
     }
   }
 
+  public static double sqrt(double n){
+    int initialValue = n;
+    int guess = 1;
+    if (n == 0){
+      return 0;
+    }
+    if (((n*n) - initialValue) < 0.00001 && ((n*n) - initialValue) > -0.00001){
+      return n;
+    }else{
+      guess = ((n/guess) + guess) / 2;
+      return sqrt(guess);
+    }
+  }
+
   public static void main(String args[]){
     char[] array1 = {'a', 'b', 'c', 'd', 'e'};
     //printAllWords(2);
@@ -52,5 +66,6 @@ public class Recursion{
     System.out.println(reverse("abcdef"));
     System.out.println(reverse(""));
     System.out.println(reverse("a"));
+    System.out.println();
   }
 }
