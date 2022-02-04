@@ -29,11 +29,8 @@ public class Recursion{
       System.out.println(word);
     }else{
       for(int i = 0; i < letters.length; i++){
-        if (i > 0){
-          if (!(word.charAt(word.length()-1) == letters[i]))printAllWords(length, word+letters[i]);
-        }
-        else{
-          printAllWords(length, word+letters[i]);
+        if (word.equals("") || word.charAt(word.length()-1) != letters[i]){
+          printNoDoubleLetters(length, word+letters[i], letters);
         }
       }
     }
