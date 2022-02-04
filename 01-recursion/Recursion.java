@@ -48,6 +48,9 @@ public class Recursion{
     char[] array1 = {'a', 'b', 'c', 'd', 'e'};
     //printAllWords(2);
     //printAllWords(3);
-    printNoDoubleLetters(3, array1);
+    //printNoDoubleLetters(3, array1);
+    System.out.println(reverse("abcdef"));
+    System.out.println(reverse(""));
+    System.out.println(reverse("a"));
   }
 }
