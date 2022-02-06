@@ -48,11 +48,11 @@ public class Recursion{
     if (n == 0){
       return 0;
     }
-    if (((n*n) - intValue) < 0.00001 && ((n*n) - intValue) > -0.00001){
-      return n;
+    if (((guess*guess) - intValue) < 0.00001 && ((guess*guess) - intValue) > -0.00001){
+      return guess;
     }else{
       guess = ((n/guess) + guess) / 2;
-      return sqrt(guess, intValue, guess);
+      return sqrt(n, intValue, guess);
     }
   }
 
