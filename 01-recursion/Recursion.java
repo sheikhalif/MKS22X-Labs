@@ -59,6 +59,22 @@ public class Recursion{
   public static double sqrt(double n){
     return sqrt(n, n, 1);
   }
+/**
+  public static long countNoDoubleLetterWords(int length, String word){
+    if (word.length() < 2){
+      return 0;
+    }
+    if ()
+  }
+**/
+  public static int fibIter(int n, int f1, int f2){
+    if (n == 0)return 0;
+    if (n == 1)return f1+f2;
+    if (n > 1){
+      return fibIter(n-1, f1+f2, f1);
+    }
+    return -1;
+  }
 
   public static void main(String args[]){
     char[] array1 = {'a', 'b', 'c', 'd', 'e'};
@@ -74,5 +90,12 @@ public class Recursion{
     System.out.println(sqrt(100));
     System.out.println(sqrt(0));
     System.out.println(sqrt(22));
+    System.out.println(fibIter(0, 1, 0));
+    System.out.println(fibIter(1, 1, 0));
+    System.out.println(fibIter(2, 1, 0));
+    System.out.println(fibIter(3, 1, 0));
+    System.out.println(fibIter(4, 1, 0));
+    System.out.println(fibIter(5, 1, 0));
+    System.out.println(fibIter(6, 1, 0));
   }
 }
