@@ -56,6 +56,10 @@ public class Recursion{
     }
   }
 
+  public static double sqrt(double n){
+    return sqrt(n, n, 1);
+  }
+
   public static void main(String args[]){
     char[] array1 = {'a', 'b', 'c', 'd', 'e'};
     //printAllWords(2);
@@ -67,5 +71,8 @@ public class Recursion{
     System.out.println(sqrt(100, 100, 1));
     System.out.println(sqrt(0, 0, 1));
     System.out.println(sqrt(22, 22, 1));
+    System.out.println(sqrt(100));
+    System.out.println(sqrt(0));
+    System.out.println(sqrt(22));
   }
 }
