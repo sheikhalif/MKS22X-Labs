@@ -61,6 +61,26 @@ public class Recursion{
   }
 
   public static long countNoDoubleLetterWords(int length, String word){
+    long answer = 0;
+    if (word.length() < length){
+      for(char letter = 'a' ; letter <= 'e'; letter++){
+        if (word.length() < 2){
+          answer += countNoDoubleLetterWords(length, word+letter);
+        }
+        else if (word.equals("") || word.charAt(word.length()-1) != word.charAt(word.length()-2)){
+          answer += countNoDoubleLetterWords(length, word+letter);
+        }
+      }
+    }
+    else{
+      return 1;
+    }
+    return answer;
+  }
+
+
+
+    /**
     if (length == word.length()){
       return 1 + countNoDoubleLetterWords(length, "");
     }else{
@@ -74,7 +94,7 @@ public class Recursion{
       }
     }
     return -1;
-  }
+    **/
 
   public static int fibIter(int n, int f1, int f2){
     if (n == 0)return 0;
