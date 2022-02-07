@@ -59,14 +59,23 @@ public class Recursion{
   public static double sqrt(double n){
     return sqrt(n, n, 1);
   }
-/**
+
   public static long countNoDoubleLetterWords(int length, String word){
-    if (word.length() < 2){
-      return 0;
+    if (length == word.length()){
+      return 1 + countNoDoubleLetterWords(length, "");
+    }else{
+      for(char letter = 'a' ; letter <= 'e'; letter++){
+        if (word.length() < 2){
+          return countNoDoubleLetterWords(length, word+letter);
+        }
+        else if (word.equals("") || word.charAt(word.length()-1) != word.charAt(word.length()-2)){
+          return countNoDoubleLetterWords(length, word+letter);
+        }
+      }
     }
-    if ()
+    return -1;
   }
-**/
+
   public static int fibIter(int n, int f1, int f2){
     if (n == 0)return 0;
     if (n == 1)return f1+f2;
@@ -78,9 +87,10 @@ public class Recursion{
 
   public static void main(String args[]){
     char[] array1 = {'a', 'b', 'c', 'd', 'e'};
-    //printAllWords(2);
-    //printAllWords(3);
-    //printNoDoubleLetters(3, array1);
+    /**
+    printAllWords(2);
+    printAllWords(3);
+    printNoDoubleLetters(3, array1);
     System.out.println(reverse("abcdef"));
     System.out.println(reverse(""));
     System.out.println(reverse("a"));
@@ -97,5 +107,8 @@ public class Recursion{
     System.out.println(fibIter(4, 1, 0));
     System.out.println(fibIter(5, 1, 0));
     System.out.println(fibIter(6, 1, 0));
+    **/
+    System.out.println(countNoDoubleLetterWords(2, ""));
+    System.out.println(countNoDoubleLetterWords(3, "" ));
   }
 }
