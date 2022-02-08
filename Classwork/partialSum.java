@@ -4,8 +4,8 @@ public class partialSum{
       return true;
     }
     else{
-      if (start < arr.length-1){
-        partialSum(start+1, arr, targetValue-arr[start+1]);
+      if (start < arr.length){
+        partialSum(start+1, arr, targetValue-arr[start]);
         partialSum(start+1, arr, targetValue);
       }
     }
