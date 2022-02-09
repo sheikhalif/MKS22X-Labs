@@ -5,8 +5,7 @@ public class partialSum{
     }
     else{
       if (start < arr.length){
-        partialSum(start+1, arr, targetValue-arr[start]);
-        partialSum(start+1, arr, targetValue);
+        return ((partialSum(start+1, arr, targetValue-arr[start])) || (partialSum(start+1, arr, targetValue)));
       }
     }
     return false;
@@ -14,7 +13,7 @@ public class partialSum{
 
   public static void main(String args[]){
     int[] arr1 = {2,4,8};
-    int[] arr2 = {2,4,8};
+    int[] arr2 = {3,4,5};
     System.out.println(partialSum(0, arr1,10));
     System.out.println(partialSum(0, arr2,14));
   }
