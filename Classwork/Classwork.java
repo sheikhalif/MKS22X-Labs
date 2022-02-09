@@ -12,8 +12,8 @@ public class Classwork{
   }
 
   public static boolean splitArray(int[] nums, int sub1, int sub2, int start){
-    if (sub1 == sub2 && start == nums.length-1){
-      return true;
+    if (start == nums.length-1){
+      return (sub1 == sub2);
     }
     else{
       if (start < nums.length){
