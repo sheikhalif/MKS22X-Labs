@@ -11,23 +11,24 @@ public class Classwork{
     return false;
   }
 
-  public static splitArray(int[] nums, int sub1, int sub2, int start){
+  public static boolean splitArray(int[] nums, int sub1, int sub2, int start){
     if (sub1 == sub2 && start == nums.length-1){
       return true;
     }
     else{
       if (start < nums.length){
-        return ((splitArray(nums, sub1+nums[start], sub2, start+1)) || splitArray(nums, sub1, sub2+nums[start], start1));
+        return ((splitArray(nums, sub1+nums[start], sub2, start+1)) || splitArray(nums, sub1, sub2+nums[start], start+1));
       }
     }
     return false;
-
   }
 
   public static void main(String args[]){
-    int[] arr1 = {2,4,8};
-    int[] arr2 = {3,4,5};
-    System.out.println(partialSum(0, arr1,10));
-    System.out.println(partialSum(0, arr2,14));
+    int[] arr1 = {5,2,3, 4, 4};
+    int[] arr2 = {12, 4, 11, 53};
+    int[] arr3 = {2, 2, 10, 10, 1, 1};
+    System.out.println(splitArray(arr1, 0, 0, 0));
+    System.out.println(splitArray(arr2, 0, 0, 0));
+    System.out.println(splitArray(arr3, 0, 0, 0));
   }
 }
