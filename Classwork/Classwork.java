@@ -38,11 +38,21 @@ public class Classwork{
     }
   }
 
-  public boolean groupNoAdj(int start, int[] nums, int target, boolean toAdd) {
+  public static boolean groupNoAdj(int start, int[] nums, int target, boolean toAdd) {
     if (target == 0)return true;
     else if (start >= nums.length)return false;
     else{
       return ((groupNoAdj(start+2, nums,target-nums[start])) || (groupNoAdj(start+1,nums, target)));
+    }
+  }
+
+  public boolean splitOdd10(int[] nums, int sub1, int sub2, int start) {
+    if (nums.length == 0)return true;
+    else if (start == nums.length){
+      return (((sub1 % 10 == 0) && (sub2 % 2 == 1)) || ((sub2 % 10 == 0) && (sub1 % 2 == 1)));
+    }
+    else{
+      return ((splitOdd10(nums, sub1+nums[start], sub2, start+1)) || splitOdd10(nums, sub1, sub2+nums[start], start+1));
     }
   }
 
