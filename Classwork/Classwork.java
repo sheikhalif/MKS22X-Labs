@@ -12,15 +12,13 @@ public class Classwork{
   }
 
   public static boolean splitArray(int[] nums, int sub1, int sub2, int start){
-    if (start == nums.length-1){
+    if (nums.length == 0)return true;
+    else if (start == nums.length){
       return (sub1 == sub2);
     }
     else{
-      if (start < nums.length){
-        return ((splitArray(nums, sub1+nums[start], sub2, start+1)) || splitArray(nums, sub1, sub2+nums[start], start+1));
-      }
+      return ((splitArray(nums, sub1+nums[start], sub2, start+1)) || splitArray(nums, sub1, sub2+nums[start], start+1));
     }
-    return false;
   }
 
   public static void main(String args[]){
