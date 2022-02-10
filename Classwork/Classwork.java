@@ -46,8 +46,8 @@ public class Classwork{
     }
   }
 
-  public boolean splitOdd10(int[] nums, int sub1, int sub2, int start) {
-    if (nums.length == 0)return true;
+  public static boolean splitOdd10(int[] nums, int sub1, int sub2, int start) {
+    if (nums.length == 0)return false;
     else if (start == nums.length){
       return (((sub1 % 10 == 0) && (sub2 % 2 == 1)) || ((sub2 % 10 == 0) && (sub1 % 2 == 1)));
     }
