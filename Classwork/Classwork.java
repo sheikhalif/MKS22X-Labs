@@ -22,10 +22,12 @@ public class Classwork{
   }
 
   public static boolean groupSum6(int start, int[] nums, int target){
-    if (target == 0){
-      return true;
+    if (start == nums.length){
+      if (target == 0)return true;
+      else{
+        return false;
+      }
     }
-    else if(start == nums.length)return false;
     else{
       if (nums[start] == 6){
         return (groupSum6(start+1, nums, target-6));
@@ -33,6 +35,14 @@ public class Classwork{
       else{
         return ((groupSum6(start+1, nums, target-nums[start])) || (groupSum6(start+1, nums, target)));
       }
+    }
+  }
+
+  public boolean groupNoAdj(int start, int[] nums, int target, boolean toAdd) {
+    if (target == 0)return true;
+    else if (start >= nums.length)return false;
+    else{
+      return ((groupNoAdj(start+2, nums,target-nums[start])) || (groupNoAdj(start+1,nums, target)));
     }
   }
 
