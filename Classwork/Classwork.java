@@ -38,7 +38,7 @@ public class Classwork{
     }
   }
 
-  public static boolean groupNoAdj(int start, int[] nums, int target, boolean toAdd) {
+  public static boolean groupNoAdj(int start, int[] nums, int target) {
     if (target == 0)return true;
     else if (start >= nums.length)return false;
     else{
@@ -53,6 +53,20 @@ public class Classwork{
     }
     else{
       return ((splitOdd10(nums, sub1+nums[start], sub2, start+1)) || splitOdd10(nums, sub1, sub2+nums[start], start+1));
+    }
+  }
+
+  public static boolean split53(int[] nums, int sub1, int sub2, int start){
+    if (nums.length == 0)return true;
+    else if (start == nums.length){
+      return (sub1 == sub2);
+    }
+    else{
+      if (nums[start] % 3 == 0)return split53(nums, sub1+nums[start], sub2, start+1);
+      else if (nums[start] % 5 == 0) return split53(nums, sub1, sub2+nums[start], start+1);
+      else{
+        return ((split53(nums, sub1+nums[start], sub2, start+1)) || split53(nums, sub1, sub2+nums[start], start+1));
+      }
     }
   }
 
