@@ -71,8 +71,26 @@ public class Classwork{
   }
 
   public static boolean groupSum5(int start, int[] nums, int target) {
-
-}
+    if (start == nums.length){
+      if (target == 0)return true;
+      else{
+        return false;
+      }
+    }
+    else{
+      if (nums[start] % 5 == 0 && start < nums.length-1){
+        if (nums[start+1] == 1){
+          return (groupSum5(start+2, nums, target-nums[start]));
+        }
+        else{
+          return (groupSum5(start+1, nums, target-nums[start]));
+        }
+      }
+      else{
+        return ((groupSum5(start+1, nums, target-nums[start])) || (groupSum5(start+1, nums, target)));
+      }
+    }
+  }
 
   public static void main(String args[]){
     int[] arr1 = {5,2,3, 4, 4};
