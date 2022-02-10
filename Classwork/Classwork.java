@@ -21,6 +21,21 @@ public class Classwork{
     }
   }
 
+  public static boolean groupSum6(int start, int[] nums, int target){
+    if (target == 0){
+      return true;
+    }
+    else if(start == nums.length)return false;
+    else{
+      if (nums[start] == 6){
+        return (groupSum6(start+1, nums, target-6));
+      }
+      else{
+        return ((groupSum6(start+1, nums, target-nums[start])) || (groupSum6(start+1, nums, target)));
+      }
+    }
+  }
+
   public static void main(String args[]){
     int[] arr1 = {5,2,3, 4, 4};
     int[] arr2 = {12, 4, 11, 53};
