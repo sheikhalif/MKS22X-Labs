@@ -93,7 +93,16 @@ public class Classwork{
   }
 
   public static boolean groupSumClump(int start, int[] nums, int target) {
-
+    if (target == 0)return true;
+    else if (start == nums.length)return false;
+    else{
+      int value = nums[start];
+      int numberTimes = 0;
+      for (int i = start; start < nums.length-1; i++){
+        if (nums[start+i] == nums[start])numberTimes++;
+      }
+      return (groupSumClump(start+numberTimes, nums, target-(value*numberTimes)) || groupSumClump(start+numberTimes, nums, target));
+    }
   }
 
 
