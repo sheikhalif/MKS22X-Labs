@@ -97,9 +97,10 @@ public class Classwork{
     else if (start == nums.length)return false;
     else{
       int value = nums[start];
-      int numberTimes = 0;
-      for (int i = start; start < nums.length-1; i++){
+      int numberTimes = 1;
+      for (int i = 1; i < nums.length-start-1; i++){
         if (nums[start+i] == nums[start])numberTimes++;
+        else{i = 100000;}
       }
       return (groupSumClump(start+numberTimes, nums, target-(value*numberTimes)) || groupSumClump(start+numberTimes, nums, target));
     }
