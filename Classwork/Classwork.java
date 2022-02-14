@@ -38,7 +38,7 @@ public class Classwork{
     }
   }
 
-  public static boolean groupNoAdj(int start, int[] nums, int target, boolean toAdd) {
+  public static boolean groupNoAdj(int start, int[] nums, int target) {
     if (target == 0)return true;
     else if (start >= nums.length)return false;
     else{
@@ -55,6 +55,57 @@ public class Classwork{
       return ((splitOdd10(nums, sub1+nums[start], sub2, start+1)) || splitOdd10(nums, sub1, sub2+nums[start], start+1));
     }
   }
+
+  public static boolean split53(int[] nums, int sub1, int sub2, int start){
+    if (nums.length == 0)return true;
+    else if (start == nums.length){
+      return (sub1 == sub2);
+    }
+    else{
+      if (nums[start] % 3 == 0)return split53(nums, sub1+nums[start], sub2, start+1);
+      else if (nums[start] % 5 == 0) return split53(nums, sub1, sub2+nums[start], start+1);
+      else{
+        return ((split53(nums, sub1+nums[start], sub2, start+1)) || split53(nums, sub1, sub2+nums[start], start+1));
+      }
+    }
+  }
+
+  public static boolean groupSum5(int start, int[] nums, int target) {
+    if (start == nums.length){
+      if (target == 0)return true;
+      else{
+        return false;
+      }
+    }
+    else{
+      if (nums[start] % 5 == 0 && start < nums.length-1){
+        if (nums[start+1] == 1){
+          return (groupSum5(start+2, nums, target-nums[start]));
+        }
+        else{
+          return (groupSum5(start+1, nums, target-nums[start]));
+        }
+      }
+      else{
+        return ((groupSum5(start+1, nums, target-nums[start])) || (groupSum5(start+1, nums, target)));
+      }
+    }
+  }
+
+  public static boolean groupSumClump(int start, int[] nums, int target) {
+    if (target == 0)return true;
+    else if (start == nums.length)return false;
+    else{
+      int value = nums[start];
+      int numberTimes = 1;
+      for (int i = 1; i < nums.length-start-1; i++){
+        if (nums[start+i] == nums[start])numberTimes++;
+        else{i = 100000;}
+      }
+      return (groupSumClump(start+numberTimes, nums, target-(value*numberTimes)) || groupSumClump(start+numberTimes, nums, target));
+    }
+  }
+
 
   public static void main(String args[]){
     int[] arr1 = {5,2,3, 4, 4};
