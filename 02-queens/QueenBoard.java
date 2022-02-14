@@ -10,7 +10,7 @@ public class QueenBoard{
     String answer = "";
     for (int i = 0; i < size; i++){
       for (int x = 0; x < size; x++){
-        if (board[i][x] == 0)answer += "_";
+        if (board[i][x] != -1)answer += board[i][x];
         else{
           answer += "Q";
         }
@@ -19,6 +19,30 @@ public class QueenBoard{
       if (i != size-1)answer += "\n";
     }
     return answer;
+  }
+
+  private boolean addQueen(int r, int c){
+    for (int i = 0; i < c; i++){
+      if (board[r][i] == -1)return false;
+    }
+    board[r][c] = -1;
+    for (int x = r+1; x < n; x++){
+      board[x][c] += 1;
+    }
+    int row = r+1;
+    int col = c+1;
+    while (row <= n && col <= n){
+      board[row][col] += 1;
+      row++;
+      col++;
+    }
+    row = r-1;
+    col = c-1;
+    while (row <= n && col <= n){
+      board[row][col] += 1;
+      row--;
+      col--;
+    }
   }
 
   public static void main(String args[]){
