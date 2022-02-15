@@ -21,30 +21,40 @@ public class QueenBoard{
     return answer;
   }
 
+  public void queenOperations(int r, int c, int addOrRemove, int incOrDec){
+    board[r][c] = addOrRemove;
+    for (int x = r+1; x < size; x++){
+      board[x][c] += incOrDec;
+    }
+    int row = r+1;
+    int col = c+1;
+    while (row < size && col < size){
+      board[row][col] += incOrDec;
+      row++;
+      col++;
+    }
+    row = r+1;
+    col = c-1;
+    while (row < size && col > -1){
+      board[row][col] += incOrDec;
+      row++;
+      col--;
+    }
+  }
+
   public boolean addQueen(int r, int c){
     for (int i = 0; i < c; i++){
       if (board[r-1][i] == -1)return false;
     }
-    board[r-1][c-1] = -1;
-    for (int x = r; x < size; x++){
-      board[x][c-1] += 1;
-    }
-    int row = r;
-    int col = c;
-    while (row < size && col < size){
-      board[row][col] += 1;
-      row++;
-      col++;
-    }
-    row = r;
-    col = c-2;
-    while (row < size && col > -1){
-      board[row][col] += 1;
-      row++;
-      col--;
-    }
+    queenOperations(r, c, -1, 1);
     return true;
   }
+/**
+  public boolean removeQueen(int r, int c){
+    if (board[r-1][c-1] != -1)return false;
+
+  }
+**/
 
   public static void main(String args[]){
     QueenBoard board1 = new QueenBoard(9);
