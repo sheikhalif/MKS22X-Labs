@@ -49,16 +49,18 @@ public class QueenBoard{
     queenOperations(r, c, -1, 1);
     return true;
   }
-/**
+
   public boolean removeQueen(int r, int c){
     if (board[r-1][c-1] != -1)return false;
-
+    queenOperations(r, c, 0, -1);
+    return true;
   }
-**/
+
 
   public static void main(String args[]){
     QueenBoard board1 = new QueenBoard(9);
     board1.addQueen(2, 3);
+    board1.removeQueen(2, 3);
     System.out.println(board1.toString());
   }
 }
