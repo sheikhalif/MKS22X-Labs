@@ -21,32 +21,34 @@ public class QueenBoard{
     return answer;
   }
 
-  private boolean addQueen(int r, int c){
+  public boolean addQueen(int r, int c){
     for (int i = 0; i < c; i++){
-      if (board[r][i] == -1)return false;
+      if (board[r-1][i] == -1)return false;
     }
-    board[r][c] = -1;
-    for (int x = r+1; x < n; x++){
-      board[x][c] += 1;
+    board[r-1][c-1] = -1;
+    for (int x = r; x < size; x++){
+      board[x][c-1] += 1;
     }
-    int row = r+1;
-    int col = c+1;
-    while (row <= n && col <= n){
+    int row = r;
+    int col = c;
+    while (row < size && col < size){
       board[row][col] += 1;
       row++;
       col++;
     }
-    row = r-1;
-    col = c-1;
-    while (row <= n && col <= n){
+    row = r;
+    col = c-2;
+    while (row < size && col > -1){
       board[row][col] += 1;
-      row--;
+      row++;
       col--;
     }
+    return true;
   }
 
   public static void main(String args[]){
     QueenBoard board1 = new QueenBoard(9);
+    board1.addQueen(2, 3);
     System.out.println(board1.toString());
   }
 }
