@@ -43,30 +43,34 @@ public class QueenBoard{
   }
 
   public boolean addQueen(int r, int c){
+    //if (r >= size || c >= size)return false;
     for (int i = 0; i < c; i++){
-      if (board[r-1][i] == -1)return false;
+      if (board[r][i] <= -1)return false;
     }
     queenOperations(r, c, -1, 1);
     return true;
   }
 
   public boolean removeQueen(int r, int c){
-    if (board[r][c  ] != -1)return false;
+    //if (r > size || c > size)return false;
+    if (board[r][c] != -1)return false;
     queenOperations(r, c, 0, -1);
     return true;
   }
 
   public boolean solve(int row){
+    /**
     if (row == 0){
       for (int i = 0; i < size; i++){
-        for (int x = 0; x < size; i++){
+        for (int x = 0; x < size; x++){
           if (board[i][x] != 0){
             throw new IllegalStateException("Board is not clear. Clear board before running solve function");
           }
         }
       }
     }
-    if (row > size){
+    **/
+    if (row >= size){
       return true;
     }
     else{
@@ -76,7 +80,7 @@ public class QueenBoard{
             return true;
           }
           else{
-            remove(row, a);
+            removeQueen(row, a);
           }
         }
       }
@@ -87,9 +91,22 @@ public class QueenBoard{
 
 
   public static void main(String args[]){
-    QueenBoard board1 = new QueenBoard(9);
-    System.out.println(board1.addQueen(2, 3));
-    System.out.println(board1.removeQueen(2, 3));
+    QueenBoard board1 = new QueenBoard(1);
+    QueenBoard board2 = new QueenBoard(2);
+    QueenBoard board3 = new QueenBoard(3);
+    QueenBoard board4 = new QueenBoard(4);
+    System.out.println(board1.solve(0));
     System.out.println(board1.toString());
+    System.out.println("\n");
+    System.out.println(board2.solve(0));
+    System.out.println(board2.toString());
+    System.out.println("\n");
+    System.out.println(board3.solve(0));
+    System.out.println(board3.toString());
+    System.out.println("\n");
+    System.out.println(board4.solve(0));
+    System.out.println(board4.toString());
+
+
   }
 }
