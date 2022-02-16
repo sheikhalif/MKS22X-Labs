@@ -51,9 +51,38 @@ public class QueenBoard{
   }
 
   public boolean removeQueen(int r, int c){
-    if (board[r][c] != -1)return false;
+    if (board[r][c  ] != -1)return false;
     queenOperations(r, c, 0, -1);
     return true;
+  }
+
+  public boolean solve(int row){
+    if (row == 0){
+      for (int i = 0; i < size; i++){
+        for (int x = 0; x < size; i++){
+          if (board[i][x] != 0){
+            throw new IllegalStateException("Board is not clear. Clear board before running solve function");
+          }
+        }
+      }
+    }
+    if (row > size){
+      return true;
+    }
+    else{
+      for (int a = 0; a < size; a++){
+        if (addQueen(row, a)){
+          if (solve(row+1)){
+            return true;
+          }
+          else{
+            remove(row, a);
+          }
+        }
+      }
+      return false;
+    }
+
   }
 
 
