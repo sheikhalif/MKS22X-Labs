@@ -51,7 +51,7 @@ public class QueenBoard{
   }
 
   public boolean removeQueen(int r, int c){
-    if (board[r-1][c-1] != -1)return false;
+    if (board[r][c] != -1)return false;
     queenOperations(r, c, 0, -1);
     return true;
   }
@@ -59,8 +59,8 @@ public class QueenBoard{
 
   public static void main(String args[]){
     QueenBoard board1 = new QueenBoard(9);
-    board1.addQueen(2, 3);
-    board1.removeQueen(2, 3);
+    System.out.println(board1.addQueen(2, 3));
+    System.out.println(board1.removeQueen(2, 3));
     System.out.println(board1.toString());
   }
 }
