@@ -43,23 +43,21 @@ public class QueenBoard{
   }
 
   public boolean addQueen(int r, int c){
-    //if (r >= size || c >= size)return false;
     for (int i = 0; i < c; i++){
       if (board[r][i] <= -1)return false;
     }
+    if (board[r][c] != 0)return false;
     queenOperations(r, c, -1, 1);
     return true;
   }
 
   public boolean removeQueen(int r, int c){
-    //if (r > size || c > size)return false;
     if (board[r][c] != -1)return false;
     queenOperations(r, c, 0, -1);
     return true;
   }
 
   public boolean solve(int row){
-    /**
     if (row == 0){
       for (int i = 0; i < size; i++){
         for (int x = 0; x < size; x++){
@@ -69,7 +67,6 @@ public class QueenBoard{
         }
       }
     }
-    **/
     if (row >= size){
       return true;
     }
@@ -86,7 +83,10 @@ public class QueenBoard{
       }
       return false;
     }
+  }
 
+  public boolean solve(){
+    solve(0);
   }
 
 
@@ -95,6 +95,7 @@ public class QueenBoard{
     QueenBoard board2 = new QueenBoard(2);
     QueenBoard board3 = new QueenBoard(3);
     QueenBoard board4 = new QueenBoard(4);
+    board4.addQueen(2,3);
     System.out.println(board1.solve(0));
     System.out.println(board1.toString());
     System.out.println("\n");
