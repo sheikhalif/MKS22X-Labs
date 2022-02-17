@@ -89,24 +89,45 @@ public class QueenBoard{
     solve(0);
   }
 
+  public boolean countSolutions(int row){
+    if (row == 0){
+      for (int i = 0; i < size; i++){
+        for (int x = 0; x < size; x++){
+          if (board[i][x] != 0){
+            throw new IllegalStateException("Board is not clear. Clear board before running solve function");
+          }
+        }
+      }
+    }
+    if (row >= size){
+      return 1;
+    }
+    else{
+      for (int a = 0; a < size; a++){
+        if (addQueen(row, a)){
+          return countSolutions(row+1);
+        }
+        else{
+          removeQueen(row, a);
+        }
+      }
+    }
+    return 0;
+  }
+
 
   public static void main(String args[]){
     QueenBoard board1 = new QueenBoard(1);
     QueenBoard board2 = new QueenBoard(2);
     QueenBoard board3 = new QueenBoard(3);
     QueenBoard board4 = new QueenBoard(4);
-    board4.addQueen(2,3);
-    System.out.println(board1.solve(0));
-    System.out.println(board1.toString());
+    System.out.println(board1.countSolutions(0));
     System.out.println("\n");
-    System.out.println(board2.solve(0));
-    System.out.println(board2.toString());
+    System.out.println(board2.countSolutions(0));
     System.out.println("\n");
-    System.out.println(board3.solve(0));
-    System.out.println(board3.toString());
+    System.out.println(board3.countSolutions(0));
     System.out.println("\n");
-    System.out.println(board4.solve(0));
-    System.out.println(board4.toString());
+    System.out.println(board4.countSolutions(0));
 
 
   }
