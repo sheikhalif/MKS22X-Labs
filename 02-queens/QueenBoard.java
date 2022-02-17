@@ -105,6 +105,15 @@ public class QueenBoard{
     return answer;
   }
 
+  public int countSolutions(){
+    try{
+      return countSolutions(0);
+    }
+    catch (IllegalStateException e){
+      return "Board is not clear. Clear board before running solve function";
+    }
+  }
+
 
   public static void main(String args[]){
     QueenBoard board1 = new QueenBoard(1);
@@ -114,6 +123,7 @@ public class QueenBoard{
     QueenBoard board5 = new QueenBoard(8);
     QueenBoard board7 = new QueenBoard(4);
     QueenBoard board8 = new QueenBoard(4);
+    board5.addQueen(3, 3);
     System.out.println(board1.countSolutions(0));
     System.out.println("\n");
     System.out.println(board2.countSolutions(0));
