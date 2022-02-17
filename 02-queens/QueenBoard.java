@@ -10,7 +10,7 @@ public class QueenBoard{
     String answer = "";
     for (int i = 0; i < size; i++){
       for (int x = 0; x < size; x++){
-        if (board[i][x] != -1)answer += board[i][x];
+        if (board[i][x] != -1)answer += "_";
         else{
           answer += "Q";
         }
@@ -86,33 +86,23 @@ public class QueenBoard{
   }
 
   public boolean solve(){
-    solve(0);
+    return solve(0);
   }
 
-  public boolean countSolutions(int row){
-    if (row == 0){
-      for (int i = 0; i < size; i++){
-        for (int x = 0; x < size; x++){
-          if (board[i][x] != 0){
-            throw new IllegalStateException("Board is not clear. Clear board before running solve function");
-          }
-        }
-      }
-    }
-    if (row >= size){
-      return 1;
-    }
-    else{
+  public int countSolutions(int row){
+    int answer = 0;
+    if (row < size){
       for (int a = 0; a < size; a++){
         if (addQueen(row, a)){
-          return countSolutions(row+1);
-        }
-        else{
+          answer+=countSolutions(row+1);
           removeQueen(row, a);
         }
       }
     }
-    return 0;
+    else{
+      return 1;
+    }
+    return answer;
   }
 
 
@@ -121,14 +111,28 @@ public class QueenBoard{
     QueenBoard board2 = new QueenBoard(2);
     QueenBoard board3 = new QueenBoard(3);
     QueenBoard board4 = new QueenBoard(4);
+    QueenBoard board5 = new QueenBoard(8);
+    QueenBoard board7 = new QueenBoard(4);
+    QueenBoard board8 = new QueenBoard(4);
     System.out.println(board1.countSolutions(0));
     System.out.println("\n");
     System.out.println(board2.countSolutions(0));
     System.out.println("\n");
     System.out.println(board3.countSolutions(0));
     System.out.println("\n");
-    System.out.println(board4.countSolutions(0));
+    System.out.println(board5.countSolutions(0));
 
 
   }
+  /**
+  if (row == 0){
+    for (int i = 0; i < size; i++){
+      for (int x = 0; x < size; x++){
+        if (board[i][x] != 0){
+          throw new IllegalStateException("Board is not clear. Clear board before running solve function");
+        }
+      }
+    }
+  }
+  **/
 }
