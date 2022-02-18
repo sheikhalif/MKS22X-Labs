@@ -1,6 +1,14 @@
 public class QueenBoard{
   private int[][] board;
   private int size;
+  private boolean animated;
+  private int delay;
+  public void setAnimate(boolean newValue){
+    animated = newValue;
+  }
+  public void setDelay(int newValue){
+    delay = newValue;
+  }
   public QueenBoard(int n){
     size = n;
     board = new int[n][n];
@@ -21,7 +29,7 @@ public class QueenBoard{
     return answer;
   }
 
-  public void queenOperations(int r, int c, int addOrRemove, int incOrDec){
+  private void queenOperations(int r, int c, int addOrRemove, int incOrDec){
     board[r][c] = addOrRemove;
     for (int x = r+1; x < size; x++){
       board[x][c] += incOrDec;
@@ -42,18 +50,28 @@ public class QueenBoard{
     }
   }
 
-  public boolean addQueen(int r, int c){
+  private boolean addQueen(int r, int c){
     for (int i = 0; i < c; i++){
       if (board[r][i] <= -1)return false;
     }
     if (board[r][c] != 0)return false;
     queenOperations(r, c, -1, 1);
+    if(animated){
+      System.out.println(Text.go(1,1));
+      System.out.println(this);//can modify here
+      Text.wait(delay);
+    }
     return true;
   }
 
-  public boolean removeQueen(int r, int c){
+  private boolean removeQueen(int r, int c){
     if (board[r][c] != -1)return false;
     queenOperations(r, c, 0, -1);
+    if(animated){
+      System.out.println(Text.go(1,1));
+      System.out.println(this);//can modify here
+      Text.wait(delay);
+    }
     return true;
   }
 
@@ -90,6 +108,15 @@ public class QueenBoard{
   }
 
   public int countSolutions(int row){
+    if (row == 0){
+      for (int i = 0; i < size; i++){
+        for (int x = 0; x < size; x++){
+          if (board[i][x] != 0){
+            throw new IllegalStateException("Board is not clear. Clear board before running solve function");
+          }
+        }
+      }
+    }
     int answer = 0;
     if (row < size){
       for (int a = 0; a < size; a++){
@@ -106,43 +133,6 @@ public class QueenBoard{
   }
 
   public int countSolutions(){
-    try{
-      return countSolutions(0);
-    }
-    catch (IllegalStateException e){
-      return "Board is not clear. Clear board before running solve function";
-    }
+    return countSolutions(0);
   }
-
-
-  public static void main(String args[]){
-    QueenBoard board1 = new QueenBoard(1);
-    QueenBoard board2 = new QueenBoard(2);
-    QueenBoard board3 = new QueenBoard(3);
-    QueenBoard board4 = new QueenBoard(4);
-    QueenBoard board5 = new QueenBoard(8);
-    QueenBoard board7 = new QueenBoard(4);
-    QueenBoard board8 = new QueenBoard(4);
-    board5.addQueen(3, 3);
-    System.out.println(board1.countSolutions(0));
-    System.out.println("\n");
-    System.out.println(board2.countSolutions(0));
-    System.out.println("\n");
-    System.out.println(board3.countSolutions(0));
-    System.out.println("\n");
-    System.out.println(board5.countSolutions(0));
-
-
-  }
-  /**
-  if (row == 0){
-    for (int i = 0; i < size; i++){
-      for (int x = 0; x < size; x++){
-        if (board[i][x] != 0){
-          throw new IllegalStateException("Board is not clear. Clear board before running solve function");
-        }
-      }
-    }
-  }
-  **/
 }
