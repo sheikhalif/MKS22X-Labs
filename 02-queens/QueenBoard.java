@@ -90,6 +90,15 @@ public class QueenBoard{
   }
 
   public int countSolutions(int row){
+    if (row == 0){
+      for (int i = 0; i < size; i++){
+        for (int x = 0; x < size; x++){
+          if (board[i][x] != 0){
+            throw new IllegalStateException("Board is not clear. Clear board before running solve function");
+          }
+        }
+      }
+    }
     int answer = 0;
     if (row < size){
       for (int a = 0; a < size; a++){
@@ -106,12 +115,7 @@ public class QueenBoard{
   }
 
   public int countSolutions(){
-    try{
-      return countSolutions(0);
-    }
-    catch (IllegalStateException e){
-      return "Board is not clear. Clear board before running solve function";
-    }
+    return countSolutions(0);
   }
 
 
@@ -120,29 +124,29 @@ public class QueenBoard{
     QueenBoard board2 = new QueenBoard(2);
     QueenBoard board3 = new QueenBoard(3);
     QueenBoard board4 = new QueenBoard(4);
-    QueenBoard board5 = new QueenBoard(8);
-    QueenBoard board7 = new QueenBoard(4);
-    QueenBoard board8 = new QueenBoard(4);
-    board5.addQueen(3, 3);
-    System.out.println(board1.countSolutions(0));
+    QueenBoard board5 = new QueenBoard(5);
+    QueenBoard board6 = new QueenBoard(6);
+    QueenBoard board7 = new QueenBoard(7);
+    QueenBoard board8 = new QueenBoard(8);
+    System.out.println(board1.countSolutions());
     System.out.println("\n");
-    System.out.println(board2.countSolutions(0));
+    System.out.println(board2.countSolutions());
     System.out.println("\n");
-    System.out.println(board3.countSolutions(0));
+    System.out.println(board3.countSolutions());
     System.out.println("\n");
-    System.out.println(board5.countSolutions(0));
+    System.out.println(board4.countSolutions());
+    System.out.println("\n");
+    System.out.println(board5.countSolutions());
+    System.out.println("\n");
+    System.out.println(board6.countSolutions());
+    System.out.println("\n");
+    System.out.println(board7.countSolutions());
+    System.out.println("\n");
+    System.out.println(board8.countSolutions());
 
 
   }
   /**
-  if (row == 0){
-    for (int i = 0; i < size; i++){
-      for (int x = 0; x < size; x++){
-        if (board[i][x] != 0){
-          throw new IllegalStateException("Board is not clear. Clear board before running solve function");
-        }
-      }
-    }
-  }
+
   **/
 }
