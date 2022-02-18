@@ -29,7 +29,7 @@ public class QueenBoard{
     return answer;
   }
 
-  public void queenOperations(int r, int c, int addOrRemove, int incOrDec){
+  private void queenOperations(int r, int c, int addOrRemove, int incOrDec){
     board[r][c] = addOrRemove;
     for (int x = r+1; x < size; x++){
       board[x][c] += incOrDec;
@@ -50,7 +50,7 @@ public class QueenBoard{
     }
   }
 
-  public boolean addQueen(int r, int c){
+  private boolean addQueen(int r, int c){
     for (int i = 0; i < c; i++){
       if (board[r][i] <= -1)return false;
     }
@@ -64,7 +64,7 @@ public class QueenBoard{
     return true;
   }
 
-  public boolean removeQueen(int r, int c){
+  private boolean removeQueen(int r, int c){
     if (board[r][c] != -1)return false;
     queenOperations(r, c, 0, -1);
     if(animated){
