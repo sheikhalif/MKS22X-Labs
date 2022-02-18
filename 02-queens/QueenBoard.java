@@ -1,6 +1,14 @@
 public class QueenBoard{
   private int[][] board;
   private int size;
+  private boolean animated;
+  private int delay;
+  public void setAnimate(boolean newValue){
+    animated = newValue;
+  }
+  public void setDelay(int newValue){
+    delay = newValue;
+  }
   public QueenBoard(int n){
     size = n;
     board = new int[n][n];
@@ -48,15 +56,22 @@ public class QueenBoard{
     }
     if (board[r][c] != 0)return false;
     queenOperations(r, c, -1, 1);
-    System.out.println(Text.go(1,1));
-    System.out.println(this);//can change this to your debug print as well
-    Text.wait(1500);//change the delay 1000 = 1 second
+    if(animated){
+      System.out.println(Text.go(1,1));
+      System.out.println(this);//can modify here
+      Text.wait(delay);
+    }
     return true;
   }
 
   public boolean removeQueen(int r, int c){
     if (board[r][c] != -1)return false;
     queenOperations(r, c, 0, -1);
+    if(animated){
+      System.out.println(Text.go(1,1));
+      System.out.println(this);//can modify here
+      Text.wait(delay);
+    }
     return true;
   }
 
@@ -120,40 +135,4 @@ public class QueenBoard{
   public int countSolutions(){
     return countSolutions(0);
   }
-
-
-  public static void main(String args[]){
-    System.out.println(Text.CLEAR_SCREEN);
-    System.out.println(Text.HIDE_CURSOR);
-    System.out.println(Text.go(1,1));
-    QueenBoard board1 = new QueenBoard(1);
-    QueenBoard board2 = new QueenBoard(2);
-    QueenBoard board3 = new QueenBoard(3);
-    QueenBoard board4 = new QueenBoard(4);
-    QueenBoard board5 = new QueenBoard(5);
-    QueenBoard board6 = new QueenBoard(6);
-    QueenBoard board7 = new QueenBoard(7);
-    QueenBoard board8 = new QueenBoard(8);
-    System.out.println(board1.countSolutions());
-    System.out.println("\n");
-    System.out.println(board2.countSolutions());
-    System.out.println("\n");
-    System.out.println(board3.countSolutions());
-    System.out.println("\n");
-    System.out.println(board4.countSolutions());
-    System.out.println("\n");
-    System.out.println(board5.countSolutions());
-    System.out.println("\n");
-    System.out.println(board6.countSolutions());
-    System.out.println("\n");
-    System.out.println(board7.countSolutions());
-    System.out.println("\n");
-    System.out.println(board8.countSolutions());
-    System.out.println(Text.RESET);
-
-
-  }
-  /**
-
-  **/
 }
