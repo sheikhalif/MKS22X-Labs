@@ -48,6 +48,9 @@ public class QueenBoard{
     }
     if (board[r][c] != 0)return false;
     queenOperations(r, c, -1, 1);
+    System.out.println(Text.go(1,1));
+    System.out.println(this);//can change this to your debug print as well
+    Text.wait(1500);//change the delay 1000 = 1 second
     return true;
   }
 
@@ -120,6 +123,9 @@ public class QueenBoard{
 
 
   public static void main(String args[]){
+    System.out.println(Text.CLEAR_SCREEN);
+    System.out.println(Text.HIDE_CURSOR);
+    System.out.println(Text.go(1,1));
     QueenBoard board1 = new QueenBoard(1);
     QueenBoard board2 = new QueenBoard(2);
     QueenBoard board3 = new QueenBoard(3);
@@ -143,6 +149,7 @@ public class QueenBoard{
     System.out.println(board7.countSolutions());
     System.out.println("\n");
     System.out.println(board8.countSolutions());
+    System.out.println(Text.RESET);
 
 
   }
