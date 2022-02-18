@@ -8,18 +8,20 @@ public class ReadFile{
       System.out.println("Method triggered");
       File textOld = new File (filename);
       Scanner text = new Scanner(textOld);
-      int rows = 0;
+      int rows = -1;
       int col = 0;
       //gets the number of rows
       while (text.hasNextLine()){
         rows++;
+        String nextLine = text.nextLine();
+        col = nextLine.length();
         System.out.println("Rows: " + rows);
       }
       System.out.println("Rows: " + rows);
 
       //gets number of cols
       String nextLine = text.nextLine();
-      col = nextLine.length();
+
       System.out.println("Cols: " + col);
 
       //sets size of int array
