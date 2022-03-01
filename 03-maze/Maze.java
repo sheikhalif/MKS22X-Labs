@@ -124,15 +124,18 @@ public class Maze{
       wait(50);
     }
     System.out.println(this.toString());
+    if (maze[row][col] == '#')return false;
     if (row >= maze.length || col >= maze[0].length || row < 0 || col < 0 )return false;
     if (maze[row][col] == 'E'){
       return true;
     }
     if (maze[row][col] == ' '){
       maze[row][col] = '@';
+      return false;
     }
     if (maze[col][row] == '@'){
       maze[row][col] = '.';
+      return false;
     }
     return (solve(row, col-1) || solve(row, col+1) || solve(row+1, col) || solve(row-1, col));
 
