@@ -114,7 +114,7 @@ public class Maze{
   All visited spots that were not part of the solution are changed to '.'
   All visited spots that are part of the solution are changed to '@'
   */
-  private int solve(int row, int col){ //you can add more parameters since this is private
+  private boolean solve(int row, int col){ //you can add more parameters since this is private
     //automatic animation! You are welcome.
     if(animate){
       gotoTop();
@@ -122,7 +122,18 @@ public class Maze{
       wait(50);
     }
 
-    //COMPLETE SOLVE
-    return -1; //so it compiles
+    if (maze[row][col] == 'E'){
+      return true;
+    }
+    if (maze[row][col] == ' '){
+      maze[row][col] = '@';
+    }
+    if (maze[col][row] == '@'){
+      maze[row][col] = '.';
+    }
+    else{
+      return (solve(row, col-1) || solve(row, col+1) || solve(row+1, col) || solve(row-1, col));
+    }
+
   }
 }
