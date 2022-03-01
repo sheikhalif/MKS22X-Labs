@@ -35,15 +35,15 @@ public class Maze{
     for (int i = 0; i < rows; i++){
       String nextLine = text2.nextLine();
       for (int x = 0; x < cols; x++){
-        char[i][x] = nextLine.charAt(x);
+        maze[i][x] = nextLine.charAt(x);
       }
     }
-    System.out.println(Arrays.toString(maze));
   }
 
   public static void main(String args[]){
     try{
       Maze maze1 = new Maze("Maze1.txt");
+      System.out.println(maze1.toString());
     }
     catch(FileNotFoundException e){
       System.out.println("File not found");
@@ -76,7 +76,14 @@ public class Maze{
   It should look like the text file with some characters replaced.
   */
   public String toString(){
-    return "WRITE THIS METHOD";
+    String answer = "";
+    for (int i = 0; i < maze.length; i++){
+      for (int x = 0; x < maze[0].length; x++){
+        answer += maze[i][x];
+      }
+      answer += '\n';
+    }
+    return answer;
   }
 
   /*Wrapper Solve Function returns the helper function
