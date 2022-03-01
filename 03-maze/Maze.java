@@ -44,6 +44,8 @@ public class Maze{
     try{
       Maze maze1 = new Maze("Maze1.txt");
       System.out.println(maze1.toString());
+      maze1.solve(5, 1);
+      System.out.println(maze1.toString());
     }
     catch(FileNotFoundException e){
       System.out.println("File not found");
@@ -89,7 +91,7 @@ public class Maze{
   /*Wrapper Solve Function returns the helper function
   Note the helper function has the same name, but different parameters.
   Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
-  */
+
   public int solve(){
     //only clear the terminal if you are running animation
     if(animate){
@@ -121,7 +123,8 @@ public class Maze{
       System.out.println(this);
       wait(50);
     }
-
+    System.out.println(this.toString());
+    if (row >= maze.length || col >= maze[0].length || row < 0 || col < 0 )return false;
     if (maze[row][col] == 'E'){
       return true;
     }
@@ -131,9 +134,7 @@ public class Maze{
     if (maze[col][row] == '@'){
       maze[row][col] = '.';
     }
-    else{
-      return (solve(row, col-1) || solve(row, col+1) || solve(row+1, col) || solve(row-1, col));
-    }
+    return (solve(row, col-1) || solve(row, col+1) || solve(row+1, col) || solve(row-1, col));
 
   }
 }
