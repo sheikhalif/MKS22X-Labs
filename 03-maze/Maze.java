@@ -30,10 +30,25 @@ public class Maze{
       String nextLine = text.nextLine();
       cols = nextLine.length();
     }
-    maze = new int[rows][cols];
-    System.out.println(rows);
-    System.out.println(cols);
+    maze = new char[rows][cols];
+    Scanner text2 = new Scanner(mazeFile);
+    for (int i = 0; i < rows; i++){
+      String nextLine = text2.nextLine();
+      for (int x = 0; x < cols; x++){
+        char[i][x] = nextLine.charAt(x);
+      }
+    }
     System.out.println(Arrays.toString(maze));
+  }
+
+  public static void main(String args[]){
+    try{
+      Maze maze1 = new Maze("Maze1.txt");
+    }
+    catch(FileNotFoundException e){
+      System.out.println("File not found");
+    }
+
   }
 
   private void wait(int millis){
