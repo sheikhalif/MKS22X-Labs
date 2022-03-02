@@ -44,7 +44,7 @@ public class Maze{
     try{
       Maze maze1 = new Maze("Maze1.txt");
       System.out.println(maze1.toString());
-      maze1.solve(5, 1);
+      System.out.println(maze1.solve(5, 1));
       System.out.println(maze1.toString());
     }
     catch(FileNotFoundException e){
@@ -123,30 +123,42 @@ public class Maze{
       System.out.println(this);
       wait(50);
     }
+    //System.out.println(this.toString());
     if (maze[row][col] == 'E'){
-      return 1;
+      int answer = 0;
+      for (int i = 0; i < maze.length; i++){
+        for (int x = 0; x < maze[0].length; x++){
+          if (maze[i][x] == '@'){
+            System.out.println(answer);
+            answer++;
+          }
+        }
+      }
+      return answer;
     }
-    else if (maze[row][col] == '#' || maze[row][col] == '.'){
+    else if (maze[row][col] == '#' || maze[row][col] == '.' || maze[row][col] == '@'){
       return -1;
     }
     else{
       maze[row][col] = '@';
-      S = solve(row+1, col);
+      int S = solve(row+1, col);
       if (S > -1){
         return 1+S;
       }
-      N = solve(row-1, col);
+      int N = solve(row-1, col);
       if (N > -1){
         return 1+N;
       }
-      E = solve(row, col+1);
+      int E = solve(row, col+1);
       if (E > -1){
         return 1+E;
       }
-      W = solve(row, col-1);
+      int W = solve(row, col-1);
       if (W > -1){
         return 1+W;
       }
+      maze[row][col] = '.';
+      return -1;
     }
 
   }
