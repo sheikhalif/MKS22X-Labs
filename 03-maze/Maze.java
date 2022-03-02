@@ -116,28 +116,38 @@ public class Maze{
   All visited spots that were not part of the solution are changed to '.'
   All visited spots that are part of the solution are changed to '@'
   */
-  private boolean solve(int row, int col){ //you can add more parameters since this is private
+  private int solve(int row, int col){ //you can add more parameters since this is private
     //automatic animation! You are welcome.
     if(animate){
       gotoTop();
       System.out.println(this);
       wait(50);
     }
-    System.out.println(this.toString());
-    if (maze[row][col] == '#')return false;
-    if (row >= maze.length || col >= maze[0].length || row < 0 || col < 0 )return false;
     if (maze[row][col] == 'E'){
-      return true;
+      return 1;
     }
-    if (maze[row][col] == ' '){
+    else if (maze[row][col] == '#' || maze[row][col] == '.'){
+      return -1;
+    }
+    else{
       maze[row][col] = '@';
-      return false;
+      S = solve(row+1, col);
+      if (S > -1){
+        return 1+S;
+      }
+      N = solve(row-1, col);
+      if (N > -1){
+        return 1+N;
+      }
+      E = solve(row, col+1);
+      if (E > -1){
+        return 1+E;
+      }
+      W = solve(row, col-1);
+      if (W > -1){
+        return 1+W;
+      }
     }
-    if (maze[col][row] == '@'){
-      maze[row][col] = '.';
-      return false;
-    }
-    return (solve(row, col-1) || solve(row, col+1) || solve(row+1, col) || solve(row-1, col));
 
   }
 }
