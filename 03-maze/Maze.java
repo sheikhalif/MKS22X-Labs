@@ -36,6 +36,10 @@ public class Maze{
       String nextLine = text2.nextLine();
       for (int x = 0; x < cols; x++){
         maze[i][x] = nextLine.charAt(x);
+        if (maze[i][x] == 'S'){
+          startRow = i;
+          startCol = x;
+        }
       }
     }
   }
@@ -44,7 +48,7 @@ public class Maze{
     try{
       Maze maze1 = new Maze("Maze1.txt");
       System.out.println(maze1.toString());
-      System.out.println(maze1.solve(5, 1));
+      System.out.println(maze1.solve());
       System.out.println(maze1.toString());
     }
     catch(FileNotFoundException e){
@@ -91,7 +95,7 @@ public class Maze{
   /*Wrapper Solve Function returns the helper function
   Note the helper function has the same name, but different parameters.
   Since the constructor exits when the file is not found or is missing an E or S, we can assume it exists.
-
+  */
   public int solve(){
     //only clear the terminal if you are running animation
     if(animate){
@@ -101,7 +105,6 @@ public class Maze{
     return solve(startRow,startCol);
 
   }
-
   /*
   Recursive Solve function:
 
@@ -129,7 +132,6 @@ public class Maze{
       for (int i = 0; i < maze.length; i++){
         for (int x = 0; x < maze[0].length; x++){
           if (maze[i][x] == '@'){
-            System.out.println(answer);
             answer++;
           }
         }
@@ -143,19 +145,19 @@ public class Maze{
       maze[row][col] = '@';
       int S = solve(row+1, col);
       if (S > -1){
-        return 1+S;
+        return S;
       }
       int N = solve(row-1, col);
       if (N > -1){
-        return 1+N;
+        return N;
       }
       int E = solve(row, col+1);
       if (E > -1){
-        return 1+E;
+        return E;
       }
       int W = solve(row, col-1);
       if (W > -1){
-        return 1+W;
+        return W;
       }
       maze[row][col] = '.';
       return -1;
