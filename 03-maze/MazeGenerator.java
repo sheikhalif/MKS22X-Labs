@@ -4,13 +4,13 @@ import java.io.*;
 public class MazeGenerator{
   public static void generate(char[][]maze, int startrow, int startcol){
     int numberOfOpenSquares = 0;
-    if (startrow+1 < maze.length){
+    if (startrow+1 < maze.length-1){
       if (maze[startrow+1][startcol] == ' ')numberOfOpenSquares++;
     }
     if (startrow-1 > 0){
       if (maze[startrow-1][startcol] == ' ')numberOfOpenSquares++;
     }
-    if (startcol+1 < maze[0].length){
+    if (startcol+1 < maze[0].length-1){
       if (maze[startrow][startcol+1] == ' ')numberOfOpenSquares++;
     }
     if (startcol-1 > 0){
@@ -23,23 +23,35 @@ public class MazeGenerator{
       maze[startrow][startcol] = ' ';
       Random rand = new Random();
       int rng = rand.nextInt(4);
-      if (rng == 0 && startrow+2 < maze.length && startcol+1 < maze[0].length){
+      if (rng == 0){
         generate(maze, startrow+1, startcol);
-      }
-      if (rng == 1 && startrow < maze.length && startcol+1 < maze[0].length){
         generate(maze, startrow-1, startcol);
+        generate(maze, startrow, startcol+1);
+        generate(maze, startrow, startcol-1);
       }
-      if (rng == 2 && startrow < maze.length && startcol+2 < maze[0].length){
+      if (rng == 1){
+        generate(maze, startrow-1, startcol);
+        generate(maze, startrow, startcol-1);
+        generate(maze, startrow+1, startcol);
         generate(maze, startrow, startcol+1);
       }
-      if (rng == 3 && startrow < maze.length && startcol < maze[0].length){
+      if (rng == 2){
         generate(maze, startrow, startcol-1);
+        generate(maze, startrow, startcol+1);
+        generate(maze, startrow-1, startcol);
+        generate(maze, startrow+1, startcol);
+      }
+      if (rng == 3){
+        generate(maze, startrow, startcol+1);
+        generate(maze, startrow+1, startcol);
+        generate(maze, startrow, startcol-1);
+        generate(maze, startrow-1, startcol);
       }
     }
   }
 
   public static void main(String args[]){
-    char[][] maze1 = mazeArrayMaker(7, 7);
+    char[][] maze1 = mazeArrayMaker(14, 14);
     System.out.println(arrayToString(maze1));
     generate(maze1, 2, 3);
     System.out.println(arrayToString(maze1));
