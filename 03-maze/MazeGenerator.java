@@ -3,23 +3,26 @@ import java.io.*;
 
 public class MazeGenerator{
   public static void generate(char[][]maze, int startrow, int startcol){
-    maze[startrow][startcol] = 'S';
+    //maze[startrow][startcol] = 'S';
+
+
+
     if (startrow+1 < maze.length && startcol+1 < maze[0].length){
       System.out.println(arrayToString(maze));
       if (maze[startrow][startcol] == '#'){
         maze[startrow][startcol] = ' ';
         Random rand = new Random();
-        int rng = rand.nextInt(5);
-        if (rng == 0){
+        int rng = rand.nextInt(4);
+        if (rng == 0 && startrow+2 < maze.length && startcol+1 < maze[0].length){
           generate(maze, startrow+1, startcol);
         }
-        if (rng == 1){
+        if (rng == 1 && startrow < maze.length && startcol+1 < maze[0].length){
           generate(maze, startrow-1, startcol);
         }
-        if (rng == 2){
+        if (rng == 2 && startrow < maze.length && startcol+2 < maze[0].length){
           generate(maze, startrow, startcol+1);
         }
-        if (rng == 3){
+        if (rng == 3 && startrow < maze.length && startcol < maze[0].length){
           generate(maze, startrow, startcol-1);
         }
       }
