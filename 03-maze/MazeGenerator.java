@@ -17,7 +17,6 @@ public class MazeGenerator{
       if (maze[startrow][startcol-1] == ' ' || maze[startrow][startcol-1] == 'S')numberOfOpenSquares++;
     }
     if (maze[startrow][startcol] == ' ' || (startrow == 0 || startrow == maze.length-1 || startcol == 0 || startcol == maze[0].length-1) || numberOfOpenSquares > 1 || maze[startrow][startcol] == 'S'){
-      //maze[sRow][sCol] = 'S';
     }
     else{
       if (arrayStart(maze) == true){
@@ -53,6 +52,7 @@ public class MazeGenerator{
         generate(maze, startrow-1, startcol);
       }
     }
+
   }
 
   public static void main(String args[]){
