@@ -17,6 +17,18 @@ public class MazeGenerator{
       if (maze[startrow][startcol-1] == ' ' || maze[startrow][startcol-1] == 'S')numberOfOpenSquares++;
     }
     if (maze[startrow][startcol] == ' ' || (startrow == 0 || startrow == maze.length-1 || startcol == 0 || startcol == maze[0].length-1) || numberOfOpenSquares > 1 || maze[startrow][startcol] == 'S'){
+      if (eExists(maze) == false){
+        Random rand2 = new Random();
+        int rng4 = rand2.nextInt(10);
+        if (rng4 == 0){
+          Random rand = new Random();
+          int rng2 = rand.nextInt(maze.length);
+          int rng3 = rand.nextInt(maze[0].length);
+          if (maze[rng2][rng3] == ' '){
+            maze[rng2][rng3] = 'E';
+          }
+        }
+      }
     }
     else{
       if (arrayStart(maze) == true){
@@ -91,6 +103,18 @@ public class MazeGenerator{
       for (int x = 0; x < maze[0].length; x++){
         if (maze[i][x] == ' ' || maze[i][x] == 'S'){
           answer = false;
+        }
+      }
+    }
+    return answer;
+  }
+
+  public static boolean eExists(char[][] maze){
+    boolean answer = false;
+    for (int i = 0; i < maze.length; i++){
+      for (int x = 0; x < maze[0].length; x++){
+        if (maze[i][x] == 'E'){
+          answer = true;
         }
       }
     }
