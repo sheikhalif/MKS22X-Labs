@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class Bronze{
-  public static void solve(String filename) throws FileNotFoundException{
+  public static long solve(String filename) throws FileNotFoundException{
     File obj = new File(filename);
     Scanner scanner1 = new Scanner(obj);
     int rows = scanner1.nextInt();
@@ -15,12 +15,47 @@ public class Bronze{
         field[i][x] = scanner1.nextInt();
       }
     }
-    System.out.println("Rows: " + rows);
-    System.out.println("Cols: " + cols);
-    System.out.println("Water level: " + waterLevel);
-    System.out.println("Num commands: " + numCommands);
-    System.out.println("Matrix:");
-    System.out.println(matrixPrint(field));
+    for (int i = 0; i < numCommands; i++){
+      int commandRow = scanner1.nextInt();
+      int commandCol = scanner1.nextInt();
+      int difference = scanner1.nextInt();
+      int largestNum = -10000000;
+      for (int a = 0; a < 3; a++){
+        for (int b = 0; b < 3; b++){
+          if (field[commandRow+a][commandCol+b] > largestNum){
+            largestNum = field[commandRow+a][commandCol+b];
+          }
+        }
+      }
+      for (int a = 0; a < 3; a++){
+        for (int b = 0; b < 3; b++){
+          if (field[commandRow+a][commandCol+b] - difference < largestNum - difference){
+            field[commandRow+a][commandCol+b] = largestNum - difference;
+          }
+          else{
+            field[commandRow+a][commandCol+b] -= difference;
+          }
+        }
+      }
+    }
+
+    for (int i = 0; i < field.length; i++){
+      for (int x = 0; x < field[0].length; x++){
+        if (field[commandRow+a][commandCol+b] - waterLevel > 0){
+          field[commandRow+a][commandCol+b] = field[commandRow+a][commandCol+b] - waterLevel;
+        }
+        else{
+          field[commandRow+a][commandCol+b] = 0;
+        }
+      }
+    }
+    int answer = 0;
+    for (int i = 0; i < field.length; i++){
+      for (int x = 0; x < field[0].length; x++){
+        answer+= field[commandRow+a][commandRow+b];
+      }
+    }
+    return (answer*72*72);
   }
 
   public static void main(String args[]){
