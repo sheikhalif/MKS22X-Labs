@@ -15,10 +15,14 @@ public class Bronze{
         field[i][x] = scanner1.nextInt();
       }
     }
+    System.out.println(numCommands);
     for (int i = 0; i < numCommands; i++){
-      int commandRow = scanner1.nextInt();
-      int commandCol = scanner1.nextInt();
+      int commandRow = scanner1.nextInt()-1;
+      int commandCol = scanner1.nextInt()-1;
       int difference = scanner1.nextInt();
+      System.out.println(commandRow);
+      System.out.println(commandCol);
+      System.out.println(difference);
       int largestNum = -10000000;
       for (int a = 0; a < 3; a++){
         for (int b = 0; b < 3; b++){
@@ -37,22 +41,23 @@ public class Bronze{
           }
         }
       }
+      System.out.println(matrixPrint(field));
     }
 
     for (int i = 0; i < field.length; i++){
       for (int x = 0; x < field[0].length; x++){
-        if (field[commandRow+a][commandCol+b] - waterLevel > 0){
-          field[commandRow+a][commandCol+b] = field[commandRow+a][commandCol+b] - waterLevel;
+        if (field[i][x] - waterLevel > 0){
+          field[i][x] = field[i][x] - waterLevel;
         }
         else{
-          field[commandRow+a][commandCol+b] = 0;
+          field[i][x] = 0;
         }
       }
     }
     int answer = 0;
     for (int i = 0; i < field.length; i++){
       for (int x = 0; x < field[0].length; x++){
-        answer+= field[commandRow+a][commandRow+b];
+        answer+= field[i][x];
       }
     }
     return (answer*72*72);
@@ -60,7 +65,7 @@ public class Bronze{
 
   public static void main(String args[]){
     try{
-      solve("Example1.txt");
+      System.out.println(solve("Example1.txt"));
     }
     catch(FileNotFoundException e){
       System.out.println("File not found");
