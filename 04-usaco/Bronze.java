@@ -33,11 +33,8 @@ public class Bronze{
       }
       for (int a = 0; a < 3; a++){
         for (int b = 0; b < 3; b++){
-          if (field[commandRow+a][commandCol+b] - difference < largestNum - difference){
+          if (field[commandRow+a][commandCol+b] >= largestNum - difference){
             field[commandRow+a][commandCol+b] = largestNum - difference;
-          }
-          else{
-            field[commandRow+a][commandCol+b] -= difference;
           }
         }
       }
@@ -54,6 +51,7 @@ public class Bronze{
         }
       }
     }
+    System.out.println(matrixPrint(field));
     int answer = 0;
     for (int i = 0; i < field.length; i++){
       for (int x = 0; x < field[0].length; x++){
