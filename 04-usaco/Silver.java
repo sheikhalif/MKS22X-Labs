@@ -10,7 +10,7 @@ public class Silver{
       int cols = scanner1.nextInt();
       int seconds = scanner1.nextInt();
       scanner1.nextLine();
-      int[][] pasture = new int[rows][cols];
+      long[][] pasture = new long[rows][cols];
       for (int i = 0; i < rows; i++){
         String inputString = scanner1.nextLine();
         for (int x = 0; x < cols; x++){
@@ -30,8 +30,7 @@ public class Silver{
       pasture[firstRow][firstCol] = 1;
 
       for (int r = 0; r < seconds; r++){
-        int[][] newPasture = copyMatrix(pasture);
-        System.out.println(matrixPrint(pasture));
+        long[][] newPasture = copyMatrix(pasture);
         for (int a = 0; a < pasture.length; a++){
           for (int b = 0; b < pasture[0].length; b++){
             if (pasture[a][b] >= 1){
@@ -52,15 +51,15 @@ public class Silver{
         }
         pasture = newPasture;
       }
-      System.out.println(matrixPrint(pasture));
-      return 1;
+      System.out.println(pasture[lastRow][lastCol]);
+      return pasture[lastRow][lastCol];
     }
     catch(FileNotFoundException e){
       return -1;
     }
   }
 
-  public static String matrixPrint(int[][] x){
+  public static String matrixPrint(long[][] x){
     String answer = "";
     for (int i = 0; i < x.length; i++){
       for (int j = 0; j < x[0].length; j++){
@@ -71,8 +70,8 @@ public class Silver{
     return answer;
   }
 
-  public static int[][] copyMatrix(int[][] pasture){
-    int[][] answer = new int[pasture.length][pasture[0].length];
+  public static long[][] copyMatrix(long[][] pasture){
+    long[][] answer = new long[pasture.length][pasture[0].length];
     for (int i = 0; i < pasture.length; i++){
       for (int x = 0; x < pasture[0].length; x++){
         answer[i][x] = pasture[i][x];
@@ -81,7 +80,7 @@ public class Silver{
     return answer;
   }
 
-  public static boolean valid(int rowInput, int colInput, int[][] pasture){
+  public static boolean valid(int rowInput, int colInput, long[][] pasture){
     if (colInput >= pasture[0].length || colInput < 0 || rowInput >= pasture.length || rowInput < 0){
       return false;
     }
