@@ -7,16 +7,19 @@ public class Preliminary{
     int rng = rand1.nextInt(end-start+1) + start;
     //doing with another array for now. will change later
     int dataCopy[] = new int[end-start+1];
-    System.out.println(data[rng]);
     dataCopy[0] = data[rng];
     int pivot = 0;
     int startCounter = 0;
     int endCounter = end-start;
-    for (int i = 0; i < end-start; i++){
-
-      if (data[i+start] >= data[rng]){
+    int buffer = 1;
+    for (int i = 0; i < end-start+1; i++){
+      if (buffer == 1 && data[i+start] == data[rng]){
+        buffer--;
+      }
+      else if (data[i+start] >= data[rng]){
         dataCopy[endCounter] = data[i+start];
         endCounter--;
+        dataCopy[pivot] = data[rng];
       }
       else if (data[i+start] < data[rng]){
         dataCopy[startCounter] = data[i+start];
@@ -24,11 +27,13 @@ public class Preliminary{
         dataCopy[pivot+1] = data[rng];
         pivot++;
       }
-      System.out.println("Step " + i);
-      System.out.println(Arrays.toString(dataCopy));
     }
-    data = dataCopy;
-    return pivot;
+    for (int a = start; a < end+1; a++){
+      if (data[a] != dataCopy[a-start]){
+        data[a] = dataCopy[a-start];
+      }
+    }
+    return pivot+start;
   }
   public static void main(String args[]){
     int[] example1 = new int[]{0, 0, 0, 32, 51, 57, 64, 12, 12, 0, 0};
