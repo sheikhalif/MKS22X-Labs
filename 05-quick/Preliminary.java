@@ -51,6 +51,24 @@ public class Preliminary{
     }
     return pivot+start;
   }
+
+  public static int quickSelect(int[] data, int k){
+    if (ordered(data)){
+      return data[k];
+    }
+    int partition = partition(data, 0, data.length-1);
+  }
+
+  public static boolean ordered (int[] data){
+    boolean answer = true;
+    for (int i = 1; i < data.length; i++){
+      if (data[i-1] > data[i]){
+        answer = false;
+      }
+    }
+    return answer;
+  }
+
   public static void main(String args[]){
     /**
     int[] example1 = new int[]{0, 0, 0, 32, 51, 57, 64, 12, 12, 0, 0};
@@ -71,6 +89,10 @@ public class Preliminary{
     int[] example3 = new int[]{3, 11, 17, 24, 31, 43};
     System.out.println(partition(example3, 0, 5));
     System.out.println(Arrays.toString(example3));
+
+    int[] example4 = new int[]{0, 12, 12, 12, 12, 0};
+    System.out.println(partition(example4, 1, 4));
+    System.out.println(Arrays.toString(example4));
 
 
   }
