@@ -89,7 +89,6 @@ public class Quick{
     System.out.println("Pivot value: "+data[pivot]+ ", Pivot index: "+pivot);
     System.out.println("Modified: "+Arrays.toString(data));
     System.out.println();
-    **/
 
     int[] example2 = new int[]{0, 0, 0, 0, 0, 0};
     System.out.println(partition(example2, 0, 4));
@@ -102,6 +101,24 @@ public class Quick{
     int[] example4 = new int[]{0, 12, 12, 12, 12, 0};
     System.out.println(partition(example4, 1, 4));
     System.out.println(Arrays.toString(example4));
+    **/
+
+    int[] example5 = new int[]{3, 11, 17, 24, 31, 43};
+    int[] example6 = new int[]{12, 5, 15, 62, 12, 42, 5};
+    System.out.println(quickSelect(example5, 0));
+    System.out.println(quickSelect(example5, 1));
+    System.out.println(quickSelect(example5, 2));
+    System.out.println(quickSelect(example5, 3));
+    System.out.println(quickSelect(example5, 4));
+    System.out.println(quickSelect(example5, 5));
+    System.out.println("Example 2");
+    System.out.println(quickSelect(example6, 0));
+    System.out.println(quickSelect(example6, 1));
+    System.out.println(quickSelect(example6, 2));
+    System.out.println(quickSelect(example6, 3));
+    System.out.println(quickSelect(example6, 4));
+    System.out.println(quickSelect(example6, 5));
+    System.out.println(quickSelect(example6, 6));
 
 
   }
