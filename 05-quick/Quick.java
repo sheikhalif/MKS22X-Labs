@@ -78,6 +78,13 @@ public class Quick{
     return answer;
   }
 
+  public static void quicksort(int[] data){
+  }
+
+  public static void quicksort(int[] data, int lo, int hi){
+    int parInd = partition(data, lo, hi);
+  };
+
   public static void main(String args[]){
     /**
     int[] example1 = new int[]{0, 0, 0, 32, 51, 57, 64, 12, 12, 0, 0};
