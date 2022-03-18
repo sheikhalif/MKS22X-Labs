@@ -1,3 +1,6 @@
+//empty array should not work with partition
+//sort should work with empty array
+
 import java.util.*;
 import java.io.*;
 
@@ -79,11 +82,16 @@ public class Quick{
   }
 
   public static void quicksort(int[] data){
+    quicksort(data, 0, data.length-1);
   }
 
-  public static void quicksort(int[] data, int lo, int hi){
-    int parInd = partition(data, lo, hi);
-  };
+  public static void quicksort(int[] data, int start, int end){
+    if (!(start == end) && start>=0 && end < data.length && start <= end){
+      int partition = partition(data, start, end);
+      quicksort(data, start, partition-1);
+      quicksort(data, partition+1, end);
+    }
+  }
 
   public static void main(String args[]){
     /**
@@ -108,7 +116,6 @@ public class Quick{
     int[] example4 = new int[]{0, 12, 12, 12, 12, 0};
     System.out.println(partition(example4, 1, 4));
     System.out.println(Arrays.toString(example4));
-    **/
 
     int[] example5 = new int[]{3, 11, 17, 24, 31, 43};
     int[] example6 = new int[]{12, 5, 15, 62, 12, 42, 5};
@@ -126,6 +133,11 @@ public class Quick{
     System.out.println(quickSelect(example6, 4));
     System.out.println(quickSelect(example6, 5));
     System.out.println(quickSelect(example6, 6));
+    **/
+
+    int[] example7 = new int[]{12, 5, 15, 62, 12, 42, 5};
+    quicksort(example7);
+    System.out.println(Arrays.toString(example7));
 
 
   }
