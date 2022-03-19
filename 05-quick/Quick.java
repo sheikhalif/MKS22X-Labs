@@ -171,7 +171,7 @@ public class Quick{
     int[] example7 = new int[]{12, 5, 15, 62, 12, 42, 5};
     quicksort(example7);
     System.out.println(Arrays.toString(example7));
-    **/
+
     int[] example8 = arrayMakerRandom(1000000);
     int[] example9 = arrayMakerRandom(1000000);
     int[] example10 = arrayMakerRandom(1000000);
@@ -194,5 +194,6 @@ public class Quick{
     quicksort(example14);
     System.out.println(Arrays.toString(example14));
     System.out.println(partition(example12, 0, example12.length-1));
+    **/
   }
 }
