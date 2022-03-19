@@ -93,6 +93,16 @@ public class Quick{
     }
   }
 
+  public static int[] arrayMakerRandom(int num){
+    int[] answer = new int[num];
+    Random rand = new Random();
+    for (int i = 0; i < num; i++){
+      int number = rand.nextInt(100000);
+      answer[i] = number;
+    }
+    return answer;
+  }
+
   public static void main(String args[]){
     /**
     int[] example1 = new int[]{0, 0, 0, 32, 51, 57, 64, 12, 12, 0, 0};
@@ -133,12 +143,20 @@ public class Quick{
     System.out.println(quickSelect(example6, 4));
     System.out.println(quickSelect(example6, 5));
     System.out.println(quickSelect(example6, 6));
-    **/
 
     int[] example7 = new int[]{12, 5, 15, 62, 12, 42, 5};
     quicksort(example7);
     System.out.println(Arrays.toString(example7));
-
+    **/
+    int[] example8 = arrayMakerRandom(1000000);
+    int[] example9 = arrayMakerRandom(1000000);
+    int[] example10 = arrayMakerRandom(1000000);
+    quicksort(example8);
+    System.out.println("Done with 1");
+    quicksort(example9);
+    System.out.println("Done with 2");
+    quicksort(example9);
+    System.out.println("Done with 3");
 
   }
 }
