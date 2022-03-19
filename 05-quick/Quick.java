@@ -97,8 +97,32 @@ public class Quick{
     int[] answer = new int[num];
     Random rand = new Random();
     for (int i = 0; i < num; i++){
-      int number = rand.nextInt(100000);
+      int number = rand.nextInt(1000);
       answer[i] = number;
+    }
+    return answer;
+  }
+  public static int[] arrayMakerSame(int num){
+    int[] answer = new int[num];
+    Random rand = new Random();
+    int number = rand.nextInt(1000);
+    for (int i = 0; i < num; i++){
+      answer[i] = number;
+    }
+    return answer;
+  }
+
+  public static int[] arrayMakerSorted(int num){
+    int[] answer = new int[num];
+    for (int i = 0; i < num; i++){
+      answer[i] = i;
+    }
+    return answer;
+  }
+  public static int[] arrayMakerRevSorted(int num){
+    int[] answer = new int[num];
+    for (int i = 0; i < num; i++){
+      answer[i] = num-i;
     }
     return answer;
   }
@@ -151,12 +175,24 @@ public class Quick{
     int[] example8 = arrayMakerRandom(1000000);
     int[] example9 = arrayMakerRandom(1000000);
     int[] example10 = arrayMakerRandom(1000000);
+    int[] example11 = arrayMakerRandom(40);
+    int[] example12 = arrayMakerSame(40);
+    int[] example13 = arrayMakerSorted(40);
+    int[] example14 = arrayMakerRevSorted(40);
     quicksort(example8);
     System.out.println("Done with 1");
     quicksort(example9);
     System.out.println("Done with 2");
     quicksort(example9);
     System.out.println("Done with 3");
-
+    quicksort(example11);
+    System.out.println(Arrays.toString(example11));
+    quicksort(example12);
+    System.out.println(Arrays.toString(example12));
+    quicksort(example13);
+    System.out.println(Arrays.toString(example13));
+    quicksort(example14);
+    System.out.println(Arrays.toString(example14));
+    System.out.println(partition(example12, 0, example12.length-1));
   }
 }
