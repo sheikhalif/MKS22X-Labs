@@ -30,7 +30,7 @@ public class Merge{
   }
 
   public static void mergesort(int[] data){
-    int[] temp = mergeSortH(data);
+    int[] temp = mergesortH(data);
     for (int i = 0; i < data.length; i++){
       data[i] = temp[i];
     }
@@ -38,28 +38,37 @@ public class Merge{
 
   public static int[] mergesortH(int[] data){
     if (data.length > 1){
-      int middle = data / 2;
+      int middle = data.length / 2;
       int[] left = new int[middle];
-      int[] right = new int[size-middle];
+      int[] right = new int[data.length-middle];
       for (int i = 0; i < middle; i++){
         left[i] = data[i];
       }
-      for (int i = 0; i < size-middle; i++){
+      for (int i = 0; i < data.length-middle; i++){
         right[i] = data[i+middle];
       }
-      mergesortH(merge(left, right));
+      System.out.println("Left array: " + Arrays.toString(left));
+      System.out.println("Right array: " + Arrays.toString(right));
+      merge(mergesortH(left), mergesortH(right));
+      //mergesortH(left);
+      //mergesortH(right);
     }
-    else{
-      return data;
-    }
+    return data;
   }
 
   public static void main(String args[]){
+    /**
     int[] example1 = new int[]{1, 4, 6, 7, 12};
     int[] example2 = new int[]{2, 5, 6, 8, 10, 15};
     System.out.println(Arrays.toString(merge(example1, example2)));
     int[] example3 = new int[]{1, 2, 5, 7, 9, 14, 16, 17, 19, 31, 35, 38, 53, 59, 82, 96};
     int[] example4 = new int[]{3, 7, 8, 12, 53, 59, 62, 65, 68, 74, 79, 89, 93};
     System.out.println(Arrays.toString(merge(example3, example4)));
+    **/
+
+    int[] example5 = new int[]{43, 12, 5, 31, 64, 73, 12, 54, 62, 7, 12, 534};
+    mergesort(example5);
+    System.out.println(Arrays.toString(example5));
+
   }
 }
