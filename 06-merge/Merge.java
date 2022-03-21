@@ -29,6 +29,31 @@ public class Merge{
     return answer;
   }
 
+  public static void mergesort(int[] data){
+    int[] temp = mergeSortH(data);
+    for (int i = 0; i < data.length; i++){
+      data[i] = temp[i];
+    }
+  }
+
+  public static int[] mergesortH(int[] data){
+    if (data.length > 1){
+      int middle = data / 2;
+      int[] left = new int[middle];
+      int[] right = new int[size-middle];
+      for (int i = 0; i < middle; i++){
+        left[i] = data[i];
+      }
+      for (int i = 0; i < size-middle; i++){
+        right[i] = data[i+middle];
+      }
+      mergesortH(merge(left, right));
+    }
+    else{
+      return data;
+    }
+  }
+
   public static void main(String args[]){
     int[] example1 = new int[]{1, 4, 6, 7, 12};
     int[] example2 = new int[]{2, 5, 6, 8, 10, 15};
