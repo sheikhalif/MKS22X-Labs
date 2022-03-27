@@ -47,11 +47,9 @@ public class Merge{
       for (int i = 0; i < data.length-middle; i++){
         right[i] = data[i+middle];
       }
-      System.out.println("Left array: " + Arrays.toString(left));
-      System.out.println("Right array: " + Arrays.toString(right));
-      merge(mergesortH(left), mergesortH(right));
-      //mergesortH(left);
-      //mergesortH(right);
+      mergesort(left);
+      mergesort(right);
+      return merge(left, right);
     }
     return data;
   }
@@ -69,6 +67,5 @@ public class Merge{
     int[] example5 = new int[]{43, 12, 5, 31, 64, 73, 12, 54, 62, 7, 12, 534};
     mergesort(example5);
     System.out.println(Arrays.toString(example5));
-
   }
 }
