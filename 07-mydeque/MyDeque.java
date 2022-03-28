@@ -17,8 +17,33 @@ public class MyDeque<E>{
     data = d;
     size = initialCapacity;
   }
-  public int size(){}
-  public String toString(){ }
+  public int size(){
+    if (end > start){
+      return end - start + 1;
+    }
+    else{
+      return data.length-start+end+1
+    }
+  }
+  public String toString(){
+    if (this.size() == 0){
+      return "[]";;
+    }
+    if (this.size() == 1){
+      return "[" + data[start] + "]";
+    }
+    String answer = "[";
+    if (end > start){
+      for (int i = start; i < end+1; i++){
+        answer += data[start];
+        if (i != end){
+          answer+=", ";
+        }
+      }
+    }
+
+
+  }
   public void addFirst(E element){ }
   public void addLast(E element){ }
   public E removeFirst(){ }
