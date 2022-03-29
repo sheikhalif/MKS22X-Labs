@@ -20,19 +20,20 @@ public class MyDeque<E>{
   public int size(){
     try{
       if (end > start){
-        return end - start + 1;
+        return end - start;
       }
       else{
-        return data.length-start+end+1
+        return data.length-start+end;
       }
     }
-    catch{
+    catch(Exception e){
+      System.out.println("Size exception, returning 0");
       return 0;
     }
   }
   public String toString(){
     if (this.size() == 0){
-      return "[]";;
+      return "[]";
     }
     if (this.size() == 1){
       return "[" + data[start] + "]";
@@ -57,22 +58,26 @@ public class MyDeque<E>{
         }
       }
     }
-    return answer;
+    return answer + "]";
   }
   public void addLast(E element){
     if (this.size() == 0){
+      System.out.println("Initial");
       start = size / 2;
       end = start + 1;
       data[start] = element;
     }
     else if (start-end == 1){
+      System.out.println("Resize triggered");
       this.resize();
     }
-    if (end == data.length-1){
+    else if (end == data.length){
       end = 0;
     }
-    data[end] = element;
-    end++;
+    else{
+      data[end] = element;
+      end++;
+    }
   }
   /**
   public void addFirst(E element){ }
@@ -103,33 +108,44 @@ public class MyDeque<E>{
     }
     for (int x = 0; x < end + 1; x++){
       d[newStart] = data[x];
-      newStart++
+      newStart++;
     }
     data = d;
   }
 
   public static void main(String args[]){
     MyDeque example1 = new MyDeque();
-    System.out.println(example1.toString());
-    example1.addLast(1);
+    System.out.println(example1.size());
     System.out.println(example1.toString());
     example1.addLast(2);
+    System.out.println(example1.size());
     System.out.println(example1.toString());
-    example1.addLast(3);
+    example1.addLast(21);
+    System.out.println(example1.size());
     System.out.println(example1.toString());
-    example1.addLast(4);
+    example1.addLast(31);
+    System.out.println(example1.size());
     System.out.println(example1.toString());
-    example1.addLast(5);
+    example1.addLast(41);
+    System.out.println(example1.size());
     System.out.println(example1.toString());
-    example1.addLast(6);
+    example1.addLast(51);
+    System.out.println(example1.size());
     System.out.println(example1.toString());
-    example1.addLast(7);
+    example1.addLast(61);
+    System.out.println(example1.size());
     System.out.println(example1.toString());
-    example1.addLast(8);
+    example1.addLast(71);
+    System.out.println(example1.size());
     System.out.println(example1.toString());
-    example1.addLast(9);
+    example1.addLast(81);
+    System.out.println(example1.size());
     System.out.println(example1.toString());
-    example1.addLast(10);
+    example1.addLast(91);
+    System.out.println(example1.size());
+    System.out.println(example1.toString());
+    example1.addLast(101);
+    System.out.println(example1.size());
     System.out.println(example1.toString());
   }
 }
