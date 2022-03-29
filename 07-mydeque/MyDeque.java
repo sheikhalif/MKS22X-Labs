@@ -41,8 +41,18 @@ public class MyDeque<E>{
         }
       }
     }
-
-
+    else{
+      for (int i = start; i < data.length; i++){
+        answer += data[i] + ", ";
+      }
+      for (int x = 0; x < end+1; x++){
+        answer += data[x];
+        if (x != end){
+          answer+=", ";
+        }
+      }
+    }
+    return answer;
   }
   public void addFirst(E element){ }
   public void addLast(E element){ }
