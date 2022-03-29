@@ -18,11 +18,16 @@ public class MyDeque<E>{
     size = initialCapacity;
   }
   public int size(){
-    if (end > start){
-      return end - start + 1;
+    try{
+      if (end > start){
+        return end - start + 1;
+      }
+      else{
+        return data.length-start+end+1
+      }
     }
-    else{
-      return data.length-start+end+1
+    catch{
+      return 0;
     }
   }
   public String toString(){
@@ -54,12 +59,32 @@ public class MyDeque<E>{
     }
     return answer;
   }
+  public void addLast(E element){
+    if (this.size() == 0){
+      start = size / 2;
+      end = start + 1;
+      data[start] = element;
+    }
+    else if (start-end == 1){
+      this.resize();
+    }
+    if (end == data.length-1){
+      end = 0;
+    }
+    data[end] = element;
+    end++;
+  }
+  /**
   public void addFirst(E element){ }
-  public void addLast(E element){ }
   public E removeFirst(){ }
   public E removeLast(){ }
-  public E getFirst(){ }
-  public E getLast(){ }
+  **/
+  public E getFirst(){
+    return data[start];
+  }
+  public E getLast(){
+    return data[end];
+  }
 
   //resize function assumes everything else is done properly
   private void resize(){
@@ -81,5 +106,30 @@ public class MyDeque<E>{
       newStart++
     }
     data = d;
+  }
+
+  public static void main(String args[]){
+    MyDeque example1 = new MyDeque();
+    System.out.println(example1.toString());
+    example1.addLast(1);
+    System.out.println(example1.toString());
+    example1.addLast(2);
+    System.out.println(example1.toString());
+    example1.addLast(3);
+    System.out.println(example1.toString());
+    example1.addLast(4);
+    System.out.println(example1.toString());
+    example1.addLast(5);
+    System.out.println(example1.toString());
+    example1.addLast(6);
+    System.out.println(example1.toString());
+    example1.addLast(7);
+    System.out.println(example1.toString());
+    example1.addLast(8);
+    System.out.println(example1.toString());
+    example1.addLast(9);
+    System.out.println(example1.toString());
+    example1.addLast(10);
+    System.out.println(example1.toString());
   }
 }
