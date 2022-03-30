@@ -166,15 +166,21 @@ public class DequeTest {
     Deque real = new LinkedList<Integer>();
     test.addFirst(1);
     real.addFirst(1);
+    //System.out.println("Test: " + test.debugToString());
+    //System.out.println("Real: " + real);
     for (int i = 0; i < 8; i++) {
       test.addLast(i);
       test.removeFirst();
       real.addLast(i);
       real.removeFirst();
+      //System.out.println("Test: " + test.debugToString());
+      //System.out.println("Real: " + real);
     }
     for (int i = 0; i < 100; i++) {
       test.addLast(i);
       real.addLast(i);
+      //System.out.println("Test: " + test.debugToString());
+      //System.out.println("Real: " + real);
     }
     int length = test.size();
     for (int i = 0; i < length; i++) {
@@ -193,16 +199,23 @@ public class DequeTest {
     Deque real = new LinkedList<Integer>();
     test.addFirst(1);
     real.addFirst(1);
+    //System.out.println("Test: " + test);
+    //System.out.println("Real: " + real);
     for (int i = 0; i < 8; i++) {
       test.addLast(i);
       test.removeFirst();
       real.addLast(i);
       real.removeFirst();
+      //System.out.println("Test: " + test);
+      //System.out.println("Real: " + real);
     }
     for (int i = 0; i < 100; i++) {
       test.addLast(i);
       real.addLast(i);
+      //System.out.println("Test: " + test);
+      //System.out.println("Real: " + real);
     }
+
     int length = test.size();
     for (int i = 0; i < length; i++) {
       if (!test.removeFirst().equals(real.removeFirst())) {
@@ -249,7 +262,7 @@ public class DequeTest {
     Deque real = new LinkedList<Integer>();
     Random random = new Random();
     int next;
-    for (int i = 0; i < 100000; i++) {
+    for (int i = 0; i < 100; i++) {
       next = random.nextInt();
       test.addFirst(next);
       real.addFirst(next);
@@ -257,7 +270,7 @@ public class DequeTest {
       test.addLast(next);
       real.addLast(next);
     }
-    for (int i = 0; i < 99999; i++) {
+    for (int i = 0; i < 99; i++) {
       boolean getFirst = test.getFirst().equals(real.getFirst());
       boolean removeFirst = test.removeFirst().equals(real.removeFirst());
       boolean getLast = test.getLast().equals(real.getLast());

@@ -8,7 +8,7 @@ public class MyDeque<E>{
 
   public MyDeque(){
     @SuppressWarnings("unchecked")
-    E[] d = (E[])new Object[10];
+    E[] d = (E[])new Object[0];
     data = d;
     size = 0;
   }
@@ -38,6 +38,20 @@ public class MyDeque<E>{
     return answer + "]";
   }
   public String toString(){
+    int tempStart;
+    int tempEnd;
+    if (start != data.length-1){
+      tempStart = start+1;
+    }
+    else{
+      tempStart = 0;
+    }
+    if (end != 0){
+      tempEnd = end-1;
+    }
+    else{
+      tempEnd = data.length-1;
+    }
     if (this.size() == 0){
       return "[]";
     }
@@ -45,21 +59,21 @@ public class MyDeque<E>{
       return "[" + data[start] + "]";
     }
     String answer = "[";
-    if (end > start){
-      for (int i = start+1; i < end; i++){
+    if (tempEnd > tempStart){
+      for (int i = tempStart; i < tempEnd+1; i++){
         answer += data[i];
-        if (i != end-1){
+        if (i != tempEnd){
           answer+=", ";
         }
       }
     }
     else{
-      for (int i = start+1; i < data.length; i++){
+      for (int i = tempStart; i < data.length; i++){
         answer += data[i] + ", ";
       }
-      for (int x = 0; x < end; x++){
+      for (int x = 0; x < tempEnd+1; x++){
         answer += data[x];
-        if (x != end){
+        if (x != tempEnd){
           answer+=", ";
         }
       }
@@ -67,19 +81,35 @@ public class MyDeque<E>{
     return answer + "]";
   }
 
-  public void addLast(E element){
+  public void addLast(E element) throws NullPointerException{
+    if (element == null){
+      throw new NullPointerException("You cannot add a null value");
+    }
     if (firstRound){
-      if (size == 0){
-        this.resize();
+      if (this.size() == 0){
+        //System.out.println("First round");
+        @SuppressWarnings("unchecked")
+        E[] d = (E[])new Object[10];
+        data = d;
+        size = 10;
       }
       int middle = size/2;
       start = middle-1;
       end = middle + 1;
       data[middle] = element;
+      //System.out.println("Data: " + this.debugToString());
     }
     else{
-      if ((start-end == 1 || start-end == -1) && (firstRound == false) && (this.size() == data.length)){
-        System.out.println("resize");
+      if (this.size() == 0){
+        @SuppressWarnings("unchecked")
+        E[] d = (E[])new Object[10];
+        data = d;
+        size = 10;
+      }
+      //System.out.println("addLast:");
+      //System.out.println("Size: " + this.size());
+      if (this.size() == data.length){
+        //System.out.println("Resize");
         this.resize();
       }
       if (end == data.length){
@@ -91,20 +121,37 @@ public class MyDeque<E>{
     if (firstRound){
       firstRound = false;
     }
+    //System.out.println(this.debugToString());
   }
 
-  public void addFirst(E element){
+  public void addFirst(E element) throws NullPointerException{
+    if (element == null){
+      throw new NullPointerException("You cannot add a null value");
+    }
     if (firstRound){
-      if (size == 0){
-        this.resize();
+      if (this.size() == 0){
+        //System.out.println("First round");
+        @SuppressWarnings("unchecked")
+        E[] d = (E[])new Object[10];
+        data = d;
+        size = 10;
       }
       int middle = size/2;
       start = middle-1;
       end = middle + 1;
       data[middle] = element;
+      //System.out.println("Data: " + this.debugToString());
     }
     else{
-      if ((start-end == 1 || start-end == -1) && (firstRound == false) && (this.size() == data.length)){
+      if (this.size() == 0){
+        @SuppressWarnings("unchecked")
+        E[] d = (E[])new Object[10];
+        data = d;
+        size = 10;
+      }
+      //System.out.println("addFirst:");
+      if (this.size() == data.length){
+        //System.out.println("Resize");
         this.resize();
       }
       if (start == -1){
@@ -116,13 +163,13 @@ public class MyDeque<E>{
     if (firstRound){
       firstRound = false;
     }
+    //System.out.println(this.debugToString());
   }
-  /**
-  public void addFirst(E element){ }
-  public E removeFirst(){ }
-  public E removeLast(){ }
-  **/
+
   public E getFirst() throws NoSuchElementException{
+    if (this.size() == 0){
+      throw new NoSuchElementException("Cannot be called if deque is empty");
+    }
     if (start != data.length-1){
       return data[start+1];
     }
@@ -131,6 +178,9 @@ public class MyDeque<E>{
     }
   }
   public E getLast() throws NoSuchElementException{
+    if (this.size() == 0){
+      throw new NoSuchElementException("Cannot be called if deque is empty");
+    }
     if (end != 0){
       return data[end-1];
     }
@@ -140,27 +190,37 @@ public class MyDeque<E>{
   }
 
   public E removeFirst() throws NoSuchElementException{
+    if (this.size() == 0){
+      throw new NoSuchElementException("Cannot be called if deque is empty");
+    }
     E element;
     if (start != data.length-1){
       element = data[start+1];
       data[start+1] = null;
+      start = start + 1;
     }
     else{
       element = data[0];
       data[0] = null;
+      start = 0;
     }
     return element;
   }
 
   public E removeLast() throws NoSuchElementException{
+    if (this.size() == 0){
+      throw new NoSuchElementException("Cannot be called if deque is empty");
+    }
     E element;
     if (end != 0){
       element = data[end-1];
       data[end-1] = null;
+      end = end - 1;
     }
     else{
       element = data[data.length-1];
       data[data.length-1] = null;
+      end = data.length-1;
     }
     return element;
   }
@@ -178,158 +238,61 @@ public class MyDeque<E>{
     E[] d = (E[])new Object[size];
     int newStart = size / 2;
     int newStartCopy = newStart;
-    for (int i = 0; i < data.length-start-1; i++){
-      d[newStart] = data[i+start+1];
-      newStart++;
+    if (start == -1 && end == data.length){
+      for (int i = 0; i < data.length; i++){
+        d[newStart] = data[i];
+        newStart++;
+      }
     }
-    for (int x = 0; x < end; x++){
-      d[newStart] = data[x];
-      newStart++;
+    else{
+      for (int i = 0; i < data.length-start-1; i++){
+        d[newStart] = data[i+start+1];
+        newStart++;
+      }
+      for (int x = 0; x < end; x++){
+        d[newStart] = data[x];
+        newStart++;
+      }
     }
     data = d;
     start = newStartCopy-1;
     end = newStartCopy + oldSize;
   }
+  public static void AddFirstLast15() {
+    MyDeque test = new MyDeque<Integer>();
+    Deque real = new LinkedList<Integer>();
+    for (int i = 0; i < 15; i++) {
+      test.addLast(i);
+      test.addFirst(i);
+      real.addLast(i);
+      real.addFirst(i);
+    }
+    System.out.println("Should print a deque of numbers 14 to 0 and then 0 to 14 incrementing by 1");
+    System.out.println(test);
+    System.out.println("Correct: " + (real.toString().equals(test.toString())));
+    System.out.println();
+  }
+
+  public static void AddRemove15Add10() {
+    MyDeque test = new MyDeque<Integer>();
+    Deque real = new LinkedList<Integer>();
+    for (int i = 0; i < 15; i++) {
+      test.addLast(i);
+      test.removeLast();
+      real.addLast(i);
+      real.removeLast();
+    }
+    for (int i = 0; i < 10; i++) {
+      test.addLast(i);
+      real.addLast(i);
+    }
+    System.out.println("Should print a deque of numbers from 0 to 9");
+    System.out.println(test);
+    System.out.println("Correct: " + (real.toString().equals(test.toString())));
+    System.out.println();
+  }
 
   public static void main(String args[]){
-    /**
-    MyDeque example1 = new MyDeque();
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(2);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(3);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(4);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(5);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(6);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(7);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(8);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(9);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(10);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(11);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(12);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(13);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(14);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(15);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(16);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(17);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(18);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-    example1.addLast(19);
-    System.out.println(example1.size());
-    System.out.println(example1.debugToString());
-
-    example1.addLast(5);
-    System.out.println(example1.size());
-    System.out.println(example1.toString());
-    example1.addLast(6);
-    System.out.println(example1.size());
-    System.out.println(example1.toString());
-    example1.addLast(61);
-    System.out.println(example1.size());
-    System.out.println(example1.toString());
-    example1.addLast(71);
-    System.out.println(example1.size());
-    System.out.println(example1.toString());
-    example1.addLast(81);
-    System.out.println(example1.size());
-    System.out.println(example1.toString());
-    example1.addLast(91);
-    System.out.println(example1.size());
-    System.out.println(example1.toString());
-    example1.addLast(101);
-    System.out.println(example1.size());
-    System.out.println(example1.toString());
-    **/
-    MyDeque example2 = new MyDeque();
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(2);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(3);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(4);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(5);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(6);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(7);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(8);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(9);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(10);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(11);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(12);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(13);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(14);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(15);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(16);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(17);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(18);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    example2.addFirst(19);
-    System.out.println(example2.size());
-    System.out.println(example2.debugToString());
-    System.out.println(example2.toString());
+    AddRemove15Add10();
   }
 }
