@@ -4,6 +4,7 @@ import java.io.*;
 public class MyDeque<E>{
   private E[] data;
   private int size, start, end;
+  private boolean firstRound = true;
 
   public MyDeque(){
     @SuppressWarnings("unchecked")
@@ -18,18 +19,23 @@ public class MyDeque<E>{
     size = initialCapacity;
   }
   public int size(){
-    try{
-      if (end > start){
-        return end - start;
-      }
-      else{
-        return data.length-start+end;
+    if (end >= start){
+      return end - start;
+    }
+    else{
+      return data.length-start+end;
+    }
+  }
+
+  public String debugToString(){
+    String answer = "[";
+    for (int i = 0; i < data.length; i++){
+      answer += data[i];
+      if (i != data.length-1){
+        answer+= ", ";
       }
     }
-    catch(Exception e){
-      System.out.println("Size exception, returning 0");
-      return 0;
-    }
+    return answer + "]";
   }
   public String toString(){
     if (this.size() == 0){
@@ -41,7 +47,7 @@ public class MyDeque<E>{
     String answer = "[";
     if (end > start){
       for (int i = start; i < end+1; i++){
-        answer += data[start];
+        answer += data[i];
         if (i != end){
           answer+=", ";
         }
@@ -61,23 +67,30 @@ public class MyDeque<E>{
     return answer + "]";
   }
   public void addLast(E element){
-    if (this.size() == 0){
+    System.out.println("Start is: " + start);
+    System.out.println("End is: " + end);
+    if (firstRound){
       System.out.println("Initial");
       start = size / 2;
       end = start + 1;
       data[start] = element;
     }
-    else if (start-end == 1){
-      System.out.println("Resize triggered");
-      this.resize();
-    }
-    else if (end == data.length){
-      end = 0;
-    }
     else{
+      if (start-end == 0 && (firstRound == false)){
+        System.out.println("Resize triggered");
+        this.resize();
+      }
+      if (end == data.length){
+        end = 0;
+      }
+      System.out.println("element: " + element);
       data[end] = element;
       end++;
     }
+    if (firstRound){
+      firstRound = false;
+    }
+
   }
   /**
   public void addFirst(E element){ }
@@ -93,6 +106,7 @@ public class MyDeque<E>{
 
   //resize function assumes everything else is done properly
   private void resize(){
+    int oldSize = size;
     if (size == 0){
       size = 10;
     }
@@ -102,34 +116,83 @@ public class MyDeque<E>{
     @SuppressWarnings("unchecked")
     E[] d = (E[])new Object[size];
     int newStart = size / 2;
+    int newStartCopy = newStart;
     for (int i = 0; i < data.length-start; i++){
       d[newStart] = data[i+start];
       newStart++;
     }
-    for (int x = 0; x < end + 1; x++){
+    for (int x = 0; x < end; x++){
       d[newStart] = data[x];
       newStart++;
     }
     data = d;
+    start = newStartCopy;
+    end = newStartCopy + oldSize;
   }
 
   public static void main(String args[]){
     MyDeque example1 = new MyDeque();
     System.out.println(example1.size());
-    System.out.println(example1.toString());
+    System.out.println(example1.debugToString());
     example1.addLast(2);
     System.out.println(example1.size());
-    System.out.println(example1.toString());
-    example1.addLast(21);
+    System.out.println(example1.debugToString());
+    example1.addLast(3);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(4);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(5);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(6);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(7);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(8);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(9);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(10);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(11);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(12);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(13);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(14);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(15);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(16);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(17);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(18);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    example1.addLast(19);
+    System.out.println(example1.size());
+    System.out.println(example1.debugToString());
+    /**
+    example1.addLast(5);
     System.out.println(example1.size());
     System.out.println(example1.toString());
-    example1.addLast(31);
-    System.out.println(example1.size());
-    System.out.println(example1.toString());
-    example1.addLast(41);
-    System.out.println(example1.size());
-    System.out.println(example1.toString());
-    example1.addLast(51);
+    example1.addLast(6);
     System.out.println(example1.size());
     System.out.println(example1.toString());
     example1.addLast(61);
@@ -147,5 +210,6 @@ public class MyDeque<E>{
     example1.addLast(101);
     System.out.println(example1.size());
     System.out.println(example1.toString());
+    **/
   }
 }
