@@ -10,13 +10,8 @@ public class MyDeque<E>{
     @SuppressWarnings("unchecked")
     E[] d = (E[])new Object[10];
     data = d;
-    size = 10;
+    size = 0;
   }
-
-
-
-
-
 
   public MyDeque(int initialCapacity){
     @SuppressWarnings("unchecked")
@@ -32,11 +27,6 @@ public class MyDeque<E>{
     return answer;
   }
 
-
-
-
-
-
   public String debugToString(){
     String answer = "[";
     for (int i = 0; i < data.length; i++){
@@ -47,12 +37,6 @@ public class MyDeque<E>{
     }
     return answer + "]";
   }
-
-
-
-
-
-
   public String toString(){
     if (this.size() == 0){
       return "[]";
@@ -83,31 +67,11 @@ public class MyDeque<E>{
     return answer + "]";
   }
 
-
-/**
   public void addLast(E element){
     if (firstRound){
-      start = size / 2;
-      end = start + 1;
-      data[start] = element;
-    }
-    else{
-      if (start-end == 0 && (firstRound == false)){
+      if (size == 0){
         this.resize();
       }
-      if (end == data.length){
-        end = 0;
-      }
-      data[end] = element;
-      end++;
-    }
-    if (firstRound){
-      firstRound = false;
-    }
-  }
-**/
-  public void addLast(E element){
-    if (firstRound){
       int middle = size/2;
       start = middle-1;
       end = middle + 1;
@@ -128,12 +92,12 @@ public class MyDeque<E>{
       firstRound = false;
     }
   }
-
-
-
 
   public void addFirst(E element){
     if (firstRound){
+      if (size == 0){
+        this.resize();
+      }
       int middle = size/2;
       start = middle-1;
       end = middle + 1;
@@ -141,7 +105,6 @@ public class MyDeque<E>{
     }
     else{
       if ((start-end == 1 || start-end == -1) && (firstRound == false) && (this.size() == data.length)){
-        System.out.println("resize");
         this.resize();
       }
       if (start == -1){
@@ -159,11 +122,47 @@ public class MyDeque<E>{
   public E removeFirst(){ }
   public E removeLast(){ }
   **/
-  public E getFirst(){
-    return data[start];
+  public E getFirst() throws NoSuchElementException{
+    if (start != data.length-1){
+      return data[start+1];
+    }
+    else{
+      return data[0];
+    }
   }
-  public E getLast(){
-    return data[end];
+  public E getLast() throws NoSuchElementException{
+    if (end != 0){
+      return data[end-1];
+    }
+    else{
+      return data[data.length-1];
+    }
+  }
+
+  public E removeFirst() throws NoSuchElementException{
+    E element;
+    if (start != data.length-1){
+      element = data[start+1];
+      data[start+1] = null;
+    }
+    else{
+      element = data[0];
+      data[0] = null;
+    }
+    return element;
+  }
+
+  public E removeLast() throws NoSuchElementException{
+    E element;
+    if (end != 0){
+      element = data[end-1];
+      data[end-1] = null;
+    }
+    else{
+      element = data[data.length-1];
+      data[data.length-1] = null;
+    }
+    return element;
   }
 
   //resize function assumes everything else is done properly
