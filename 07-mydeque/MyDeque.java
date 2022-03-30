@@ -258,41 +258,6 @@ public class MyDeque<E>{
     start = newStartCopy-1;
     end = newStartCopy + oldSize;
   }
-  public static void AddFirstLast15() {
-    MyDeque test = new MyDeque<Integer>();
-    Deque real = new LinkedList<Integer>();
-    for (int i = 0; i < 15; i++) {
-      test.addLast(i);
-      test.addFirst(i);
-      real.addLast(i);
-      real.addFirst(i);
-    }
-    System.out.println("Should print a deque of numbers 14 to 0 and then 0 to 14 incrementing by 1");
-    System.out.println(test);
-    System.out.println("Correct: " + (real.toString().equals(test.toString())));
-    System.out.println();
-  }
 
-  public static void AddRemove15Add10() {
-    MyDeque test = new MyDeque<Integer>();
-    Deque real = new LinkedList<Integer>();
-    for (int i = 0; i < 15; i++) {
-      test.addLast(i);
-      test.removeLast();
-      real.addLast(i);
-      real.removeLast();
-    }
-    for (int i = 0; i < 10; i++) {
-      test.addLast(i);
-      real.addLast(i);
-    }
-    System.out.println("Should print a deque of numbers from 0 to 9");
-    System.out.println(test);
-    System.out.println("Correct: " + (real.toString().equals(test.toString())));
-    System.out.println();
-  }
-
-  public static void main(String args[]){
-    AddRemove15Add10();
-  }
+  public static void main(String args[]){}
 }
