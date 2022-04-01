@@ -5,17 +5,12 @@ public class Calculator{
     ArrayDeque<Double> deque = new ArrayDeque<Double>();
     String[] inputs = s.split(" ");
     for (int i = 0; i < inputs.length; i++){
-      System.out.println(inputs[i] + " ");
-    }
-    for (int i = 0; i < inputs.length; i++){
-      System.out.println(deque.toString());
       if (inputs[i].equals("+")){
         if (deque.size() < 2){
           throw new IllegalArgumentException("Too many operations");
         }
         double second = deque.pollLast();
         double first = deque.pollLast();
-        System.out.println("First: " + first + "\nSecond: " + second);
         deque.add(first+second);
       }
       else if(inputs[i].equals("-")){
@@ -24,7 +19,6 @@ public class Calculator{
         }
         double second = deque.pollLast();
         double first = deque.pollLast();
-        System.out.println("First: " + first + "\nSecond: " + second);
         deque.add(first-second);
       }
       else if(inputs[i].equals("*")){
@@ -33,7 +27,6 @@ public class Calculator{
         }
         double second = deque.pollLast();
         double first = deque.pollLast();
-        System.out.println("First: " + first + "\nSecond: " + second);
         deque.add(first*second);
       }
       else if(inputs[i].equals("/")){
@@ -42,7 +35,6 @@ public class Calculator{
         }
         double second = deque.pollLast();
         double first = deque.pollLast();
-        System.out.println("First: " + first + "\nSecond: " + second);
         deque.add(first/second);
       }
       else if (inputs[i].equals("%")){
@@ -51,7 +43,6 @@ public class Calculator{
         }
         double second = deque.pollLast();
         double first = deque.pollLast();
-        System.out.println("First: " + first + "\nSecond: " + second);
         if (second < 0)second*=-1;
         if (first < 0)first*=-1;
         deque.add(first % second);
