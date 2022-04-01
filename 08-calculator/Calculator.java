@@ -4,6 +4,9 @@ public class Calculator{
   public static double eval (String s) throws IllegalArgumentException{
     ArrayDeque<Double> deque = new ArrayDeque<Double>();
     String[] inputs = s.split(" ");
+    if (inputs.length == 0){
+      throw new IllegalArgumentException("Input cannot be of size 0. Too few operands");
+    }
     for (int i = 0; i < inputs.length; i++){
       if (inputs[i].equals("+")){
         if (deque.size() < 2){
@@ -58,9 +61,17 @@ public class Calculator{
   }
 
   public static void main(String[] args){
-    System.out.println("ANSWER 1: " + eval("11 3 - 4 + 2.5 *"));
-    System.out.println("ANSWER 2: " + eval("10 2.0 +"));
-    System.out.println("ANSWER 3: " + eval("8 2 + 99 9 - * 2 + 9 -"));
-    System.out.println("ANSWER 4: " + eval("1 2 3 4 5 + * - -"));
+    try{
+      System.out.println("ANSWER 1: " + eval("11 3 - 4 + 2.5 *"));
+      System.out.println("ANSWER 2: " + eval("10 2.0 +"));
+      System.out.println("ANSWER 3: " + eval("8 2 + 99 9 - * 2 + 9 -"));
+      System.out.println("ANSWER 4: " + eval("1 2 3 4 5 + * - -"));
+      System.out.println("ANSWER 5: " + eval("2"));
+      System.out.println("ANSWER 6: " + eval(""));
+    }
+    catch(IllegalArgumentException e){
+      System.out.println("Error");
+    }
+
   }
 }
