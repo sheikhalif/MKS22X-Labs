@@ -8,10 +8,53 @@ public class Calculator{
       throw new IllegalArgumentException("Input cannot be of size 0. Too few operands");
     }
     for (int i = 0; i < inputs.length; i++){
+      double second = deque.pollLast();
+      double first = deque.pollLast();
+      switch(inputs[i]){
+        case "+":
+          if (deque.size() < 2){
+            throw new IllegalArgumentException("Too few operands");
+          }
+          deque.add(first+second);
+          break;
+        case "-":
+          if (deque.size() < 2){
+            throw new IllegalArgumentException("Too few operands");
+          }
+          deque.add(first-second);
+          break;
+        case "*":
+          if (deque.size() < 2){
+            throw new IllegalArgumentException("Too few operands");
+          }
+          deque.add(first*second);
+          break;
+        case "/":
+          if (deque.size() < 2){
+            throw new IllegalArgumentException("Too few operands");
+          }
+          deque.add(first/second);
+          break;
+        case "%":
+          if (deque.size() < 2){
+            throw new IllegalArgumentException("Too few operands");
+          }
+          if (second < 0)second*=-1;
+          if (first < 0)first*=-1;
+          deque.add(first % second);
+          break;
+        default:
+          deque.add(Double.parseDouble(inputs[i]));
+      }
+    }
+
+
+
+
+
+      /**
       if (inputs[i].equals("+")){
-        if (deque.size() < 2){
-          throw new IllegalArgumentException("Too many operations");
-        }
+
         double second = deque.pollLast();
         double first = deque.pollLast();
         deque.add(first+second);
@@ -54,8 +97,9 @@ public class Calculator{
         deque.add(Double.parseDouble(inputs[i]));
       }
     }
+    **/
     if (deque.size() > 1){
-      throw new IllegalArgumentException("Not enough operations");
+      throw new IllegalArgumentException("Too many operands");
     }
     return deque.getFirst();
   }
