@@ -62,5 +62,7 @@ public class Calculator{
     System.out.println("ANSWER 2: " + eval("10 2.0 +"));
     System.out.println("ANSWER 3: " + eval("8 2 + 99 9 - * 2 + 9 -"));
     System.out.println("ANSWER 4: " + eval("1 2 3 4 5 + * - -"));
+    //System.out.println("ANSWER 5: " + eval("4 2 3 5 1 - + * + *"));
+    System.out.println("ANSWER 6: " + eval("5 3 7 9 + +"));
   }
 }
