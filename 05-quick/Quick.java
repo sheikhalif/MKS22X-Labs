@@ -195,5 +195,14 @@ public class Quick{
     System.out.println(Arrays.toString(example14));
     System.out.println(partition(example12, 0, example12.length-1));
     **/
+    int[] example15 = arrayMakerSorted(1000000);
+    quicksort(example15);
+    System.out.println("Done with 1");
+    int[] example16 = arrayMakerSorted(1000000);
+    quicksort(example16);
+    System.out.println("Done with 2");
+    int[] example17 = arrayMakerSorted(1000000);
+    quicksort(example17);
+    System.out.println("Done with 3");
   }
 }
