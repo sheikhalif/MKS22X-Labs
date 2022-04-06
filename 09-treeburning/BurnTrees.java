@@ -24,36 +24,41 @@ public class BurnTrees{
    *new fires should remain fire, and not spread.
    */
   public void tick(){
+    ticks++;//leave this here.
     int dequeSize = deque.size();
     for (int i = 0; i < dequeSize; i++){
       int[] mapPosition = deque.remove();
-      if (mapPosition[0] - 1 > 0){
+      map[mapPosition[0]][mapPosition[1]] = ASH;
+      if (mapPosition[0] - 1 >= 0){
         if (map[mapPosition[0]-1][mapPosition[1]] == 2){
+          map[mapPosition[0]-1][mapPosition[1]] = FIRE;
           int[] spreadTree = new int[]{mapPosition[0]-1, mapPosition[1]};
           deque.add(spreadTree);
         }
       }
       if (mapPosition[0] + 1 < map.length){
         if (map[mapPosition[0]+1][mapPosition[1]] == 2){
+          map[mapPosition[0]+1][mapPosition[1]] = FIRE;
           int[] spreadTree = new int[]{mapPosition[0]+1, mapPosition[1]};
           deque.add(spreadTree);
         }
       }
-      if (mapPosition[1] - 1 > 0){
+      if (mapPosition[1] - 1 >= 0){
         if (map[mapPosition[0]][mapPosition[1]-1] == 2){
           int[] spreadTree = new int[]{mapPosition[0], mapPosition[1]-1};
+          map[mapPosition[0]][mapPosition[1]-1] = FIRE;
           deque.add(spreadTree);
         }
       }
-      if (mapPosition[1] + 1 > map[0].length){
+      if (mapPosition[1] + 1 < map[0].length){
         if (map[mapPosition[0]][mapPosition[1]+1] == 2){
           int[] spreadTree = new int[]{mapPosition[0], mapPosition[1]+1};
+          map[mapPosition[0]][mapPosition[1]+1] = FIRE;
           deque.add(spreadTree);
         }
       }
-      map[mapPosition[0]][mapPosition[1]] = 3;
+      //System.out.println(toString());
     }
-    ticks++;//leave this here.
     //YOU MUST IMPLEMENT THE REST OF THIS METHOD
   }
 
@@ -79,12 +84,11 @@ public class BurnTrees{
   public void start(){
     //If you add more instance variables you can add more here,
     //otherwise it is complete.
-    System.out.println(map.toString());
+    System.out.println(this.toString());
     deque = new Frontier();
     for(int i = 0; i < map.length; i++){
-      System.out.println("Trying to add: " + i + " " + "0");
       if(map[i][0]==TREE){
-        int[] leftTree = new int[]{i, 0};
+        int[] leftTree = {i, 0};
         deque.add(leftTree);
         map[i][0]=FIRE;
       }

@@ -1,16 +1,17 @@
 import java.util.*;
 public class Frontier{
-  private ArrayDeque<int[]> frontier;
+  private ArrayDeque<int[]> list;
   public Frontier(){
+    list = new ArrayDeque<int[]>();
   }
   public int size(){
-    return frontier.size();
+    return list.size();
   }
   public void add(int[]location){
-    frontier.add(location);
+    list.addLast(location);
   }
   public int[] remove(){
-    int[] answer = frontier.pollLast();
+    int[] answer = list.pollFirst();
     return answer;
   }
 }
