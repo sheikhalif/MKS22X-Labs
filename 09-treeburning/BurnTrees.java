@@ -1,4 +1,5 @@
 import java.util.*;
+import java.lang.*;
 public class BurnTrees{
   private int[][]map;
   private int ticks;
@@ -62,6 +63,16 @@ public class BurnTrees{
     //YOU MUST IMPLEMENT THE REST OF THIS METHOD
   }
 
+  public static double averageOfNRuns(int n, int size, int density){
+    double answer = 0;
+    for (int i = 0; i < n; i++){
+      BurnTrees burn = new BurnTrees(size, size, density);
+      double time = burn.getRuntime();
+      answer+=time;
+    }
+    return answer / n;
+  }
+
   /***********************YOU MIGHT UPDATE THIS**************************/
 
   /*Initialize the simulation.
@@ -99,6 +110,7 @@ public class BurnTrees{
 
 
     public static void main(String[]args){
+      /**
       int WIDTH = 20;
       int HEIGHT = 20;
       int DELAY = 200;
@@ -119,6 +131,10 @@ public class BurnTrees{
 
       //int ans = b.outputAll();//print all screens one after another
       //System.out.println(ans);//print the final answer
+      **/
+      for (int i = 1; i < 11; i++){
+        System.out.println("Size: 100\nDensity: " + (i*0.1) + "\nAverage runtime: " + averageOfNRuns(30, 100, (i*0.1)));
+      }
     }
 
 
