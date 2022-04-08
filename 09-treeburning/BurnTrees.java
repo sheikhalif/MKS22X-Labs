@@ -66,8 +66,13 @@ public class BurnTrees{
   public static double averageOfNRuns(int n, int size, int density){
     double answer = 0;
     for (int i = 0; i < n; i++){
+      Calender c1 = Calander.getInstance();
+      Date d1 = c1.getTime();
+      int startTime = d1.getTime();
       BurnTrees burn = new BurnTrees(size, size, density);
-      double time = burn.getRuntime();
+      Date d2 = c1.getTime();
+      int endTime = d2.getTime();
+      double time = endTime - startTime;
       answer+=time;
     }
     return answer / n;
