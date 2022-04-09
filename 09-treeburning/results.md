@@ -9,7 +9,8 @@ in my lifetime.
 3. Changing the size of the board had little effect on the start and end densities -- all the 0.05 densities ran for about two ticks and all the 1 densities ran for **n** ticks. The greatest variation came around the 0.5-0.75 densities where the tick values fluctuated the most but even then, the pattern in how the values changed were similar between all board sizes.
 
 4. As you increase the size of the board, the greatest number of ticks also went up but the density at which the greatest number of ticks was found did not change. I tested this by running trials on all three board sizes, 100, 500, and 1000, for 100 runs each. These were the results:
-| Size | 100    | Size | 500     | Size | 1000    |
+
+  | Size | 100    | Size | 500     | Size | 1000    |
 |-----:|--------|-----:|---------|-----:|---------|
 | 0.05 |  1.36  | 0.05 |   1.98  | 0.05 |   2.34  |
 | 0.10 |  1.93  | 0.10 |   3.05  | 0.10 |   3.51  |
@@ -33,7 +34,8 @@ in my lifetime.
 | 1.00 |   100  | 1.00 |   500   | 1.00 |   1000  |
 
 5. A density of 60% yields the greatest burn time.
-| Density |  Runtime |
+
+  | Density |  Runtime |
 |:-------:|:--------:|
 |   0.05  |   2.255  |
 |   0.10  |   3.467  |
