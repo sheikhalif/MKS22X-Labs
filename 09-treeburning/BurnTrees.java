@@ -63,17 +63,12 @@ public class BurnTrees{
     //YOU MUST IMPLEMENT THE REST OF THIS METHOD
   }
 
-  public static double averageOfNRuns(int n, int size, int density){
+  public static double averageOfNRuns(int n, int size, double density){
     double answer = 0;
     for (int i = 0; i < n; i++){
-      Calender c1 = Calander.getInstance();
-      Date d1 = c1.getTime();
-      int startTime = d1.getTime();
       BurnTrees burn = new BurnTrees(size, size, density);
-      Date d2 = c1.getTime();
-      int endTime = d2.getTime();
-      double time = endTime - startTime;
-      answer+=time;
+      int tickCount = burn.run();
+      answer+=tickCount;
     }
     return answer / n;
   }
@@ -100,7 +95,7 @@ public class BurnTrees{
   public void start(){
     //If you add more instance variables you can add more here,
     //otherwise it is complete.
-    System.out.println(this.toString());
+    //System.out.println(this.toString());
     deque = new Frontier();
     for(int i = 0; i < map.length; i++){
       if(map[i][0]==TREE){
@@ -137,8 +132,8 @@ public class BurnTrees{
       //int ans = b.outputAll();//print all screens one after another
       //System.out.println(ans);//print the final answer
       **/
-      for (int i = 1; i < 11; i++){
-        System.out.println("Size: 100\nDensity: " + (i*0.1) + "\nAverage runtime: " + averageOfNRuns(30, 100, (i*0.1)));
+      for (double i = 0; i < 11; i++){
+        System.out.println("Size: 1000\nDensity: " + (0.55+(i*0.01)) + "\nAverage runtime: " + averageOfNRuns(1000, 1000, 0.55+(i*0.01)) +"\n");
       }
     }
 
