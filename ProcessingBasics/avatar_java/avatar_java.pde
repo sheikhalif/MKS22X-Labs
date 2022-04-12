@@ -56,6 +56,18 @@
            y = change(y);
            avatar(x,y);
   }
+  
+  void mouseMoved(){
+    avatar(mouseX-100, mouseY-90);
+  }
+  
+  void mouseClicked(){
+    if (MODE == 3)MODE=1;
+    else{
+      MODE++;
+    }
+    System.out.println("Mode: " + MODE);
+  }
   int change(int value){
     /**
      mode 1: return a random location on the screen.
