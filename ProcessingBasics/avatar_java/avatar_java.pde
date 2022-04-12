@@ -87,7 +87,7 @@
      case 3:
        int rng4 = x + 1;
        if (rng4 > 800){
-         return 0;
+         return -100;
        }
        return rng4;
      default:
