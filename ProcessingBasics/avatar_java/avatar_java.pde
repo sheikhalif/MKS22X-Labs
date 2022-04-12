@@ -8,7 +8,7 @@
   }
   void avatar(int x, int y){
   //your code here
-  fill(0, 0, 0);
+  fill(255, 0, 0);
   triangle(x+10, y+60, x+40, y+60, x+25, y-70);
   triangle(x+40, y+60, x+70, y+60, x+55, y-70);
   triangle(x+70, y+60, x+100, y+60, x+85, y-70);
