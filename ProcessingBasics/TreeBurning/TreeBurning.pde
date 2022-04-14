@@ -16,9 +16,9 @@ void setup() {
    *How do you calculate the SQUARESIZE (size of each square you draw) using an expression?
    *note: width/cols and height/rows must be equal ratios for this number to be meaningful.
    *ANSWER HERE:
-   *SQUARESIZE = width / ROWS;
+   *SQUARESIZE = width / COLS;
    */
-  size(500, 600);
+  size(1000, 1200);
   ROWS = 60;
   COLS = 50;
   /**question 2 *********************************
