@@ -23,6 +23,7 @@ public float yLocation(Orb otherOrb){
 void display(){
   fill(c);
   ellipse(x, y, radius, radius);
+  line(x, y, x+(xSpeed * 5), y+(ySpeed * 5));
 }
 
 void move(){
@@ -47,9 +48,9 @@ void gravity(){
 }
 
 void attract(Orb other){
-  float distance = dist(this.x, this.y, xLocation(other), yLocation(other));
-  xSpeed += ((xLocation(other) - xLocation(this))/(distance * distance)) * 20;
-  ySpeed += ((yLocation(other) - yLocation(this))/(distance * distance)) * 20;    
+  float distance = dist(this.x, this.y, other.x, other.y);
+  xSpeed += 20 * (other.x - this.x) / (distance * distance);
+  ySpeed += 20 * (other.y - this.y) / (distance * distance);  
 }
   //Change the speed when you collide with the end of the screen (all 4 sides)
 
