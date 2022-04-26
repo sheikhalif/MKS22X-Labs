@@ -13,8 +13,13 @@ public Orb(float x_,float y_,float xSpeed_, float ySpeed_, float radius_ ){
   //random color... why not.
   c = color(random(255),random(255),random(255));
 }
+public float xLocation(Orb otherOrb){
+  return x;
+}
 
-
+public float yLocation(Orb otherOrb){
+  return y;
+}
 void display(){
   fill(c);
   ellipse(x, y, radius, radius);
@@ -35,6 +40,16 @@ void move(){
   if (y > height-radius/2 || y < radius/2){
     ySpeed*=-1;
   }
+}
+
+void gravity(){
+  ySpeed += 0.15;
+}
+
+void attract(Orb other){
+  float distance = dist(this.x, this.y, xLocation(other), yLocation(other));
+  xSpeed += ((xLocation(other) - xLocation(this))/(distance * distance)) * 20;
+  ySpeed += ((yLocation(other) - yLocation(this))/(distance * distance)) * 20;    
 }
   //Change the speed when you collide with the end of the screen (all 4 sides)
 
