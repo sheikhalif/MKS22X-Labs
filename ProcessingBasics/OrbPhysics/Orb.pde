@@ -52,6 +52,14 @@ void attract(Orb other){
   xSpeed += 20 * (other.x - this.x) / (distance * distance);
   ySpeed += 20 * (other.y - this.y) / (distance * distance);  
 }
-  //Change the speed when you collide with the end of the screen (all 4 sides)
 
+void attractSpring(Orb other){
+  float distance = dist(this.x, this.y, other.x, other.y);
+  float force = distance - SPRING_LENGTH;
+  xSpeed += SPRING_CONSTANT * ((force * (other.x-this.x))/distance);
+  xSpeed *= SPRING_DAMPEN;
+  ySpeed += SPRING_CONSTANT * ((force * (other.y-this.y))/distance);
+  ySpeed *= SPRING_DAMPEN;
+  //Change the speed when you collide with the end of the screen (all 4 sides)
+}
 }

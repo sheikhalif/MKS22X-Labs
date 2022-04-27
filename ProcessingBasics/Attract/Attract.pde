@@ -17,7 +17,10 @@ void mouseClicked() {
 void draw() {
   strokeWeight(0);
   background(255);
+  Orb firstOrb = new Orb(100, 100, 0, 0, 10);
+  firstOrb.display();
   for (Orb o : orbList) {
+    o.attract(firstOrb);
     o.move();
     o.display();
   }

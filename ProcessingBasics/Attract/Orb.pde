@@ -45,10 +45,9 @@ void move(){
   }
 }
   //Change the speed when you collide with the end of the screen (all 4 sides)
-
+  void attract(Orb other){
+  xSpeed += ((xLocation(other) - this.x)/dist(this.x, this.y, xLocation(other), yLocation(other))) * 0.05;
+  ySpeed += ((yLocation(other) - this.y)/dist(this.x, this.y, xLocation(other), yLocation(other))) * 0.05;
 }
 
-void attract(Orb other){
-  xSpeed += (xLocation(other) - this.x)/dist(this.x, this.y, xLocation(other), yLocation(other));
-  ySpeed += (yLocation(other) - this.y)/dist(this.x, this.y, xLocation(other), yLocation(other));
 }

@@ -1,12 +1,12 @@
 final float SPRING_CONSTANT = 0.999;
 final float SPRING_LENGTH = 100;
-final float SPRING_DAMPEN = 0.005;
+final float SPRING_DAMPEN = 0.05;
 ArrayList<Orb>orbList;
 Orb firstOrb = new Orb(500, 400, 0, 0, 20);
 int mode;
 boolean backgroundMode;
-boolean lineMode;
-boolean gravityMode;
+boolean lineMode = false;
+boolean gravityMode = false;
 void setup() {
   size(1000, 800);
   orbList = new ArrayList<Orb>();
@@ -35,21 +35,29 @@ void keyPressed(){
       mode = 0;
     }
   }
-  else if (keyCode = 71){
-    
-  println(keyCode);
+  if (keyCode == 71){
+    if (gravityMode)gravityMode = false;
+    else if (!(gravityMode))gravityMode = true;
+  }
+  if (keyCode == 66){
+    if (backgroundMode)backgroundMode = false;
+    else if (!(backgroundMode))backgroundMode = true;
+  }
 }
   
 void draw() {
   strokeWeight(0);
-  background(255);
+  if (backgroundMode)background(255);
   firstOrb.display();
   for (Orb o : orbList) {
-    if (mode == 0){
+    if (gravityMode || mode == 0){
       o.gravity();
     }
-    else if (mode == 1){
+    if (mode == 1){
       o.attract(firstOrb);
+    }
+    else if (mode == 2){
+      o.attractSpring(firstOrb);
     }
     o.move();
     o.display();

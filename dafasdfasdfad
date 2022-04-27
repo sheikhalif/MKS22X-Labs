@@ -1,0 +1,257 @@
+[33mcommit c575115a465e399bc72e10638213df8d23c70974[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Fri Apr 1 21:47:02 2022 -0400
+
+    merge issues
+
+[33mcommit 2fc3370c3da824dc7c4fcc5e28fbe050615bff3b[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Thu Mar 31 22:48:44 2022 -0400
+
+    cleaned up some debugging print statements
+
+[33mcommit fffb0465fcc698725ee6095c686d108dde469f3b[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Thu Mar 31 22:45:57 2022 -0400
+
+    all tests, so far, work
+
+[33mcommit 21592d2d6342fba44fc7de6d888c5251db2e2789[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Thu Mar 31 22:36:09 2022 -0400
+
+    finished writing the function, will now test it
+
+[33mcommit 6b6051bf07b0f1704b08b288ba5a163c4df5b842[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Thu Mar 31 22:27:02 2022 -0400
+
+    writing the code for the individual operations
+
+[33mcommit 9b1351df44312b4ec203b132a8d9479c625d5c62[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Wed Mar 30 00:02:41 2022 -0400
+
+    removed some testing code to make the file cleaner
+
+[33mcommit 4ba432ceab43515c745873cdec1360619dfe450e[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Wed Mar 30 00:00:25 2022 -0400
+
+    done debugging, everything works as intended
+
+[33mcommit 2ba3182e1638cd26ba0d62c63d7b55d67aabf591[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Tue Mar 29 22:20:24 2022 -0400
+
+    continuing debugging, resize is the issue i think
+
+[33mcommit 5f1bc15709ff9be973825e4494122aadda71c66e[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Tue Mar 29 21:50:58 2022 -0400
+
+    more debugging, addFirst works now, need to write getFirst and getLast
+
+[33mcommit 2a1e0e4d207063794ec48b12bed7238f606307d4[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Tue Mar 29 21:21:30 2022 -0400
+
+    done debugging addLast, the rest should be easy
+
+[33mcommit 3afa6e2fceefc2248dde6c4689b71da25dbb147c[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 28 23:31:13 2022 -0400
+
+    still debugging, problem is in addLast
+
+[33mcommit b4c61aa8befea99d05115c46186c64a085141b17[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 28 23:15:52 2022 -0400
+
+    wrote addLast function, now can test all the code i have so far
+
+[33mcommit 7aa7f8be2077d33e21ba2d1fa8fe7cfb813ef950[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 28 23:03:17 2022 -0400
+
+    finished writing print function, still cant test anything yet
+
+[33mcommit 1d5c8d476be3ff69d5e79c247d0d563a7f89531f[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 28 10:12:20 2022 -0400
+
+    wrote size function and started writing toString(). end of class period
+
+[33mcommit 74b508fe06de661752909e0eb8fd3e835a48b3c3[m
+Merge: 97f8b0a abab0b5
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 28 10:01:57 2022 -0400
+
+    Merge branch 'main' of github.com:sheikhalif/MKS22X-Labs into main
+
+[33mcommit 97f8b0a34b5576ce1c5a2c6ab05103d2f718680b[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 28 10:01:50 2022 -0400
+
+    wrote a resize function but i have no way of testing it yet
+
+[33mcommit abab0b5ecc3adf6344c96f9c73ce2f862025eca3[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Sun Mar 27 14:54:35 2022 -0400
+
+    forgot to push this final commit
+
+[33mcommit 58f5b926da129cdf94b06ae9f1c0dadc0ebe290d[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 21 18:57:54 2022 -0400
+
+    continueing debugging
+
+[33mcommit 0a497a5bfecc2a5a51810a37ed826cda10f7da0e[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 21 18:40:54 2022 -0400
+
+    mergesort written; need to test
+
+[33mcommit 964e376e2f40da3e1634ef3f6a27a3b5a4a5f0f5[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 21 18:29:33 2022 -0400
+
+    additional testing has been done; merge works as intended
+
+[33mcommit 61eff77ca4ea058be703cb320589b32fd741a441[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 21 18:13:59 2022 -0400
+
+    fixed file structure
+
+[33mcommit 4abdfc2e12c203cf7382585b2f57b9b99166fee2[m
+Merge: 955ff34 03d07b8
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 21 10:13:51 2022 -0400
+
+    Merge branch 'main' of github.com:sheikhalif/MKS22X-Labs into main
+
+[33mcommit 955ff34c2b3c80f74941f48ec2fef6a97781c0b6[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 21 10:13:41 2022 -0400
+
+    end of class period. merge still has bugs
+
+[33mcommit 9396fd60d2a142db9836a5345f6c30aa4b1462e7[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 21 10:03:16 2022 -0400
+
+    wrote merge function, need to test
+
+[33mcommit 03d07b822c12f4a8335659081ac2875c25800e94[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Sat Mar 19 13:31:31 2022 -0400
+
+    done testing, all works as intended
+
+[33mcommit 73cc4b109b1c3230d82c05a35faf93d308f09927[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Sat Mar 19 13:31:14 2022 -0400
+
+    done testing, all works as intended
+
+[33mcommit 974e30de64fed6bc2bec0e0352af7d239909cf97[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Sat Mar 19 13:23:15 2022 -0400
+
+    done testing random arrays of size 1 million, will now do edge cases
+
+[33mcommit aed5733f508673b68b8751678eb9af133fd4948c[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Fri Mar 18 10:13:39 2022 -0400
+
+    quicksort appears to work with small arrays. more testing to be done
+
+[33mcommit 830374be31bd6684d50e206940592a92205a582e[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Thu Mar 17 10:13:27 2022 -0400
+
+    started writing quicksort, end of class period
+
+[33mcommit 24a7da1ab601fa4b4c61d7f5caebbc38a88852ef[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Thu Mar 17 10:04:23 2022 -0400
+
+    quickSelect works, will now work on quickSort
+
+[33mcommit 120935e644206a2a69c2d59a2cd14a475f019e6f[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Thu Mar 17 10:01:24 2022 -0400
+
+    wrote first quickSelect, need to test now
+
+[33mcommit 37a664bd42629484e7b8adf37749e16311e279d8[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Tue Mar 15 10:11:56 2022 -0400
+
+    started working on quickSelect. end of class period
+
+[33mcommit 56933c5d7281086519c89b4cec03d3c0dce6ac8c[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Tue Mar 15 10:01:11 2022 -0400
+
+    added what should happen if all values are equal
+
+[33mcommit b949d4103c391aa9836619d9454cbe34fe3f9798[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Tue Mar 15 06:10:04 2022 -0400
+
+    output works as intended, tested
+
+[33mcommit 8186d3e71d2a713c4b4d89123cdd75504946eb1d[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Tue Mar 15 05:59:08 2022 -0400
+
+    got function working, now have to work on changing the values in the original data array
+
+[33mcommit 3ca12c154ec1f5b8e82bfefccb577887fc16e028[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Tue Mar 15 05:34:11 2022 -0400
+
+    wrote function, will now test
+
+[33mcommit 8a4df929937a79dd3494bf51feaf8badc738c4f0[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Mon Mar 14 10:13:06 2022 -0400
+
+    end of class period, set up function header
+
+[33mcommit 4dd9f27c5348412d3f0c97816ee1644131a4982c[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Sun Mar 13 13:47:12 2022 -0400
+
+    changed all my 2d int arrays to 2d long arrays. output works well. all is done
+
+[33mcommit 8f013647c09882fb0dc4011a6bc1ec69d5057265[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Sun Mar 13 13:44:03 2022 -0400
+
+    added algorithm that was discussed in class. now need to return the correct output
+
+[33mcommit d3b8f37904510dc3fd4574b98b804340810cc9f2[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Sun Mar 13 13:14:26 2022 -0400
+
+    got the inputs into variables and the map into a 2d array
+
+[33mcommit 7e2c56107cd9c03ae74354a52e02207c10b3d1bd[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Sun Mar 13 12:47:05 2022 -0400
+
+    fixed depth bugs, fixed how the function handles exceptions. done with bronze
+
+[33mcommit 77e3b1bd62ec1580baca1bc4e29aac617aeb626b[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:   Sun Mar 13 12:42:47 2022 -0400
+
+    fixed how the stomping works, need to fix depth counter now
+
+[33mcommit 28ee3ea73782514aa4a273eaa24e5ec2d38705ff[m
+Author: Sheikh Alif <salif30@stuy.edu>
+Date:  
