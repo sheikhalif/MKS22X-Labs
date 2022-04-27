@@ -1,10 +1,17 @@
+final float SPRING_CONSTANT = 0.999;
+final float SPRING_LENGTH = 100;
+final float SPRING_DAMPEN = 0.005;
 ArrayList<Orb>orbList;
 Orb firstOrb = new Orb(500, 400, 0, 0, 20);
 int mode;
+boolean backgroundMode;
+boolean lineMode;
+boolean gravityMode;
 void setup() {
   size(1000, 800);
   orbList = new ArrayList<Orb>();
-  mode = 2;
+  mode = 0;
+  gravityMode = true;
 }
 void mouseClicked() {
   Orb newOrb = new Orb(mouseX, mouseY, 5, 0, 20);
@@ -20,10 +27,17 @@ void keyPressed(){
     orbList.clear();
   }
   else if (keyCode == 32){
-    println("Mode switch"); 
-    if (mode == 1)mode = 2;
-    else if (mode == 2)mode = 1;
+    println("Mode switch");
+    if (mode != 2){
+      mode++;
+    }
+    else{
+      mode = 0;
+    }
   }
+  else if (keyCode = 71){
+    
+  println(keyCode);
 }
   
 void draw() {
@@ -31,10 +45,10 @@ void draw() {
   background(255);
   firstOrb.display();
   for (Orb o : orbList) {
-    if (mode == 1){
+    if (mode == 0){
       o.gravity();
     }
-    else if (mode == 2){
+    else if (mode == 1){
       o.attract(firstOrb);
     }
     o.move();
