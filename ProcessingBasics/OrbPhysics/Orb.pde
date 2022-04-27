@@ -24,6 +24,9 @@ void display(){
   fill(c);
   ellipse(x, y, radius, radius);
   line(x, y, x+(xSpeed * 5), y+(ySpeed * 5));
+  if (lineMode){
+    line(x, y, firstOrb.x, firstOrb.y);
+  }
 }
 
 void move(){
