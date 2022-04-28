@@ -39,7 +39,10 @@ void keyPressed(){
     else if (!(gravityMode))gravityMode = true;
   }
   else if (keyCode == 66){
-    if (backgroundMode)backgroundMode = false;
+    if (backgroundMode){
+      backgroundMode = false;
+      background(255);
+    }
     else if (!(backgroundMode))backgroundMode = true;
   }
   else if (keyCode == 76){
