@@ -14,6 +14,9 @@
   *complete this method
   */
   void add(OrbNode orb){
+    orb.next = last;
+    orb.prev = last.prev;
+    last.prev = orb;
    //insert orb at the end of the list before the last node.
   }
 
