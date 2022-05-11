@@ -22,13 +22,17 @@ public class OrbNode {
   void display() {
     fill(c);
     ellipse(x, y, radius*2, radius*2);
-    if(x > this.prev.x){
+    /**
+    OrbNode prevNode = this.prev;
+    if(this.x > prevNode.x){
       line(x-5, y, this.prev.x+5, this.prev.y);
       line(x+5, y, this.next.x-5, this.next.y);
+    }
     else{
       line(x+5, y, this.prev.x-5, this.prev.y);
       line(x-5, y, this.next.x+5, this.next.y);
     }
+    **/
   }
 
   void springAttract(OrbNode other) {

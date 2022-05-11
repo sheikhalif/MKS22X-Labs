@@ -13,7 +13,7 @@
   /**
   *complete this method
   */
-  void add(OrbNode orb){
+  void add(OrbNode orb){s
     orb.next = last;
     orb.prev = last.prev;
     last.prev = orb;
@@ -26,6 +26,10 @@
   */
   void processAll() {
     OrbNode current = first;
+    while (current != null){
+      current.move();
+      current = current.next;
+    }
     //advance current to next until it is null, move() each of the nodes
   }
   /**
@@ -34,6 +38,10 @@
   */
   void display() {
     OrbNode current = first;
+    while (current != null){
+      current.display();
+      current = current.next;
+    }
     //advance current to next until it is null, display() each of the nodes
   }
 }
