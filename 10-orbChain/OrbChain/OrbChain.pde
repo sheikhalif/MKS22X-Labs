@@ -3,7 +3,7 @@ static float SPRING_LENGTH = 50;
 static float SPRING_DAMPEN = 0.990;
 static float SPRING_CONSTANT = 0.015;
 static float GRAVITY = 0.35;
-static int MODE = SPRING;
+static int mode = 0;
 OrbList orbs;
 void setup() {
   size(1000, 800);
@@ -55,6 +55,14 @@ void keyPressed(){
   if (keyCode == BACKSPACE){
     orbs = new OrbList();
   }
+  else if (keyCode == 32){
+    if (mode != 2){
+      mode++;
+    }
+    else{
+      mode = 0;
+    }
+  }
   
 }
 
@@ -62,4 +70,13 @@ void draw() {
   background(255);
   orbs.processAll();
   orbs.display();
+  if (mode == 0){
+    text("Mode: ADD", 10, 10);
+  }
+  if (mode == 1){
+    text("Mode: INSERT", 10, 10);
+  }
+  if (mode == 2){
+    text("Mode: DELETE", 10, 10);
+  }
 }
