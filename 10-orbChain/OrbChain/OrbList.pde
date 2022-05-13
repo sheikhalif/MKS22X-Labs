@@ -41,10 +41,12 @@
   
   OrbNode getNodeAt(int x, int y){
     OrbNode current = first;
-    while (sqrt((x - current.x)*(x - current.x) + (y-current.y)*(y-current.y)) >= 30){
+    while (current != null && sqrt(((x-current.x)*(x-current.x))+((y-current.y)*(y-current.y))) > 30){
       current = current.next;
     }
-    if (current != first)return current;
+    if (current != last){
+      return current;
+    }
     return null;
   }
 
