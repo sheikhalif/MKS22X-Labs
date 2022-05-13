@@ -52,6 +52,9 @@ void keyPressed(){
   if (keyCode == 56){
     GRAVITY *= 0.95;
   }
+  if (keyCode == BACKSPACE){
+    orbs = new OrbList();
+  }
   
 }
 
