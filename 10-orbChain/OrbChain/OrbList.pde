@@ -31,6 +31,22 @@
     current.prev = toBeAdded;
     current.prev.prev.next = toBeAdded;
   }
+  
+  void delete(OrbNode target){
+    if (target != null){
+      target.prev.next = target.next;
+      target.next.prev = target.prev;
+    }
+  }
+  
+  OrbNode getNodeAt(int x, int y){
+    OrbNode current = first;
+    while (sqrt((x - current.x)*(x - current.x) + (y-current.y)*(y-current.y)) >= 30){
+      current = current.next;
+    }
+    if (current != first)return current;
+    return null;
+  }
 
   /**
   *complete this method
