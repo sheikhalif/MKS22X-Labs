@@ -20,6 +20,17 @@
     last.prev.prev.next = orb;
    //insert orb at the end of the list before the last node.
   }
+  
+  void add(int xcor, OrbNode toBeAdded){
+    OrbNode current = first;
+    while(current.x < xcor){
+      current = current.next;
+    }
+    toBeAdded.next = current;
+    toBeAdded.prev = current.prev;    
+    current.prev = toBeAdded;
+    current.prev.prev.next = toBeAdded;
+  }
 
   /**
   *complete this method

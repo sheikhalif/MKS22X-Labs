@@ -10,7 +10,12 @@ void setup() {
   orbs = new OrbList();
 }
 void mouseClicked() {
-  orbs.add(new OrbNode(mouseX,mouseY,0,0,30));
+  if (mode == 0){
+    orbs.add(new OrbNode(mouseX,mouseY,0,0,30));
+  }
+  if (mode == 1){
+    orbs.add(mouseX, new OrbNode(mouseX, mouseY, 0, 0, 30));
+  }
 }
 
 void keyPressed(){
