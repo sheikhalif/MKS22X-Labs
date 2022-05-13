@@ -13,10 +13,11 @@
   /**
   *complete this method
   */
-  void add(OrbNode orb){s
+  void add(OrbNode orb){
     orb.next = last;
-    orb.prev = last.prev;
+    orb.prev = last.prev;    
     last.prev = orb;
+    last.prev.prev.next = orb;
    //insert orb at the end of the list before the last node.
   }
 
