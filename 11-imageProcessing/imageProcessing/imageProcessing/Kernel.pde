@@ -18,7 +18,17 @@
       return color(0, 0, 0);
     }
     else{
-      return img.get(x, y);
+      float red = 0;
+      float green = 0;
+      float blue = 0;
+      for (int imgWidth = x-1; imgWidth < x+2; imgWidth++){
+        for (int imgHeight = y-1; imgHeight < y+2; imgHeight++){
+          red+=red(img.get(imgWidth, imgHeight)) * kernel[imgWidth-x+1][imgHeight-x+1];
+          green+=green(img.get(imgWidth, imgHeight)) * kernel[imgWidth-x+1][imgHeight-x+1];
+          blue+=blue(img.get(imgWidth, imgHeight)) * kernel[imgWidth-x+1][imgHeight-x+1];
+        }
+      }
+      return color(red, green, blue);
     }
     
     //Hint: start by always returning black.
