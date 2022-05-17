@@ -1,11 +1,14 @@
  public class Kernel {
   float[][]kernel;
-
   /**Constructor takes the kernel that will be applied to the image
   *This implementation only allows 3x3 kernels
   */
   public Kernel(float[][]init) {
-    init = kernel;
+    for (int i = 0; i < init.length; i++){
+      for (int x = 0; x < init[0].length; x++){
+        kernel[i][x] = init[i][x];
+      }
+    }
   }
 
   /**If part of the kernel is off of the image, return black, Otherwise
@@ -23,9 +26,13 @@
       float blue = 0;
       for (int imgWidth = x-1; imgWidth < x+2; imgWidth++){
         for (int imgHeight = y-1; imgHeight < y+2; imgHeight++){
-          red+=red(img.get(imgWidth, imgHeight)) * kernel[imgWidth-x+1][imgHeight-y+1];
-          green+=green(img.get(imgWidth, imgHeight)) * kernel[imgWidth-x+1][imgHeight-x+1];
-          blue+=blue(img.get(imgWidth, imgHeight)) * kernel[imgWidth-x+1][imgHeight-x+1];
+          color imageColor = img.get(imgWidth, imgHeight);
+          println(imgHeight-y+1);
+          println(imgWidth-x+1);
+          println(kernel[imgHeight-y+1][imgWidth-x+1]);
+          red+=(red(imageColor) * kernel[imgHeight-y+1][imgWidth-x+1]);
+          green+=(green(imageColor) * kernel[imgHeight-y+1][imgWidth-x+1]);
+          blue+=(blue(imageColor) * kernel[imgHeight-y+1][imgWidth-x+1]);
         }
       }
       if (red > 255)red=255;
