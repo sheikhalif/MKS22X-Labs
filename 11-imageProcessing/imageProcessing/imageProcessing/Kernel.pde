@@ -14,7 +14,13 @@
   *     0-255, then clamp it to that range (< 0 becomes 0, >255 becomes 255)
   */
   color calcNewColor(PImage img, int x, int y) {
-    return color(0, 0, 0);
+    if (x == 0 || y == 0 || x == img.width-1 || y == img.height-1){
+      return color(0, 0, 0);
+    }
+    else{
+      return img.get(x, y);
+    }
+    
     //Hint: start by always returning black.
     //This will let you test your apply method right away!
 
