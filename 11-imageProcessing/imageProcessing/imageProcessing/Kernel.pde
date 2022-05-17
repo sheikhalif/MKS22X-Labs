@@ -23,11 +23,17 @@
       float blue = 0;
       for (int imgWidth = x-1; imgWidth < x+2; imgWidth++){
         for (int imgHeight = y-1; imgHeight < y+2; imgHeight++){
-          red+=red(img.get(imgWidth, imgHeight)) * kernel[imgWidth-x+1][imgHeight-x+1];
+          red+=red(img.get(imgWidth, imgHeight)) * kernel[imgWidth-x+1][imgHeight-y+1];
           green+=green(img.get(imgWidth, imgHeight)) * kernel[imgWidth-x+1][imgHeight-x+1];
           blue+=blue(img.get(imgWidth, imgHeight)) * kernel[imgWidth-x+1][imgHeight-x+1];
         }
       }
+      if (red > 255)red=255;
+      if (red < 0)red=0;
+      if (green > 255)green=255;
+      if (green < 0)green=0;
+      if (blue > 255)blue=255;
+      if (blue < 0)blue=0;
       return color(red, green, blue);
     }
     
