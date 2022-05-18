@@ -4,11 +4,14 @@
   *This implementation only allows 3x3 kernels
   */
   public Kernel(float[][]init) {
+    kernel = init;
+    /**
     for (int i = 0; i < init.length; i++){
       for (int x = 0; x < init[0].length; x++){
-        kernel[i][x] = init[i][x];
+         kernel[i][x] = init[i][x];
       }
     }
+    **/
   }
 
   /**If part of the kernel is off of the image, return black, Otherwise
@@ -27,9 +30,6 @@
       for (int imgWidth = x-1; imgWidth < x+2; imgWidth++){
         for (int imgHeight = y-1; imgHeight < y+2; imgHeight++){
           color imageColor = img.get(imgWidth, imgHeight);
-          println(imgHeight-y+1);
-          println(imgWidth-x+1);
-          println(kernel[imgHeight-y+1][imgWidth-x+1]);
           red+=(red(imageColor) * kernel[imgHeight-y+1][imgWidth-x+1]);
           green+=(green(imageColor) * kernel[imgHeight-y+1][imgWidth-x+1]);
           blue+=(blue(imageColor) * kernel[imgHeight-y+1][imgWidth-x+1]);
