@@ -1,14 +1,12 @@
 int mode = 0;
 
 void keyPressed(){
-  if (keyCode == BACKSPACE){
-    if (mode != 7){
+  if (mode != 7){
       mode++;
     }
     else{
       mode = 0;
     }
-  }
 }
 
 void setup(){
